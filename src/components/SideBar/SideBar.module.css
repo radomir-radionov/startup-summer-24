@@ -1,0 +1,7 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  border: none;
+  background-color: var(--mantine-color-purple-1);
+}
