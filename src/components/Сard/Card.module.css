@@ -1,0 +1,28 @@
+.link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  width: 482px;
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.content {
+  flex-direction: column;
+  align-self: stretch;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--mantine-color-purple-5);
+}

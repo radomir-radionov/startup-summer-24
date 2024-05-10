@@ -4,7 +4,7 @@ import { createTheme } from '@mantine/core';
 
 const theme = createTheme({
   colors: {
-    greyScale: [
+    grayScale: [
       '#FFFFFF',
       '#F5F5F6',
       '#EAEBED',

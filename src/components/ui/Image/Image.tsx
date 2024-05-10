@@ -1,15 +1,12 @@
 'use client';
 
-import NextImage from 'next/image';
+import NextImage, { ImageProps } from 'next/image';
 import { Image as MantineImage } from '@mantine/core';
 
-type TProps = {
-  src: any;
-  alt: string;
-};
+type TProps = Omit<ImageProps, 'alt'> & Required<Pick<ImageProps, 'alt'>>;
 
-const Image = ({ src, alt }: TProps) => {
-  return <MantineImage component={NextImage} src={src} alt={alt} />;
+const Image = ({ src, alt, ...rest }: TProps) => {
+  return <MantineImage component={NextImage} src={src} alt={alt} {...rest} />;
 };
 
 export default Image;

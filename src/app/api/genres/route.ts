@@ -1,7 +1,7 @@
 import { urlsTmdb } from '@/constants';
 
 export async function GET() {
-  const res = await fetch(urlsTmdb.movies, {
+  const res = await fetch(urlsTmdb.genres, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_READ_ACCESS_TOKEN}`,
     },

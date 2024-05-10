@@ -4,4 +4,6 @@ export { default as Tab } from './Tabs/Tab';
 export { default as Controls } from './Controls/Controls';
 
 export { default as Movies } from './Movies/Movies';
-export { default as Movie } from './Movies/Movie';
+export { default as Card } from './Сard/Card';
+export { default as Detail } from './Сard/components/Detail/Detail';
+export { default as Rating } from './Сard/components/Rating/Rating';

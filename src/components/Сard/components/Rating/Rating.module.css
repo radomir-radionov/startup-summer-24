@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  & > .valueBox {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    & > .rating {
+      font-feature-settings: 'clig' off, 'liga' off;
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 20px;
+    }
+  }
+}

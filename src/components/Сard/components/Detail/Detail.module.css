@@ -1,0 +1,20 @@
+.detail {
+  display: flex;
+  gap: 8px;
+  color: var(--mantine-color-grayScale-5);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+
+  & > span {
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    font-feature-settings: 'clig' off, 'liga' off;
+    color: var(--mantine-color-grayScale-6);
+  }
+}
