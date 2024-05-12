@@ -28,7 +28,7 @@ const MantinProvider = ({ children }: TProps) => {
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
         </AppShell.Header> */}
         <SideBar />
-        <AppShell.Main flex={1} pt={14} px={90} pb={82} bg="grayScale.2">
+        <AppShell.Main flex={1} pt={40} px={90} pb={82} bg="grayScale.2">
           {children}
         </AppShell.Main>
       </AppShell>

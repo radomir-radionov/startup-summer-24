@@ -1,0 +1,5 @@
+.detailWrapper {
+  & > p > span:nth-child(1) {
+    width: 140px;
+  }
+}

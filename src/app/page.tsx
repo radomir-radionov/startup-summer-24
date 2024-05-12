@@ -1,4 +1,4 @@
-import { Controls, Movies } from '@/components';
+import { Movies } from '@/features/MovieEntity';
 import { TMovie } from '@/types/movie';
 
 type TGetMoviesRes = {

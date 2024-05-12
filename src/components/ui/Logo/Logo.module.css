@@ -9,3 +9,8 @@
   letter-spacing: -0.48px;
   color: var(--mantine-color-purple-5);
 }
+
+.image {
+  max-width: 32px;
+  max-height: 32px;
+}

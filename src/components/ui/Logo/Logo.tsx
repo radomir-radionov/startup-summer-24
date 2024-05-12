@@ -6,7 +6,7 @@ import classes from './Logo.module.css';
 
 const Logo = () => (
   <div className={classes.logo}>
-    <Image src={LogoIcon} alt="Logo" />
+    <Image src={LogoIcon} alt="Logo" outerStyles={classes.image} />
     ArrowFlicks
   </div>
 );

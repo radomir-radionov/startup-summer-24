@@ -1,4 +1,6 @@
-async function getMovieById(id: string) {
+import { MoviePage } from '@/features/MovieEntity';
+
+async function getMovieById(id: string): Promise<any> {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/movies/${id}`,
     {
@@ -17,8 +19,7 @@ type TParams = {
 };
 
 export default async function Page({ params: { id } }: TParams) {
-  const data = await getMovieById(id);
-  console.log(1111, data);
+  const movie = await getMovieById(id);
 
-  return <div>1</div>;
+  return <MoviePage movie={movie} />;
 }

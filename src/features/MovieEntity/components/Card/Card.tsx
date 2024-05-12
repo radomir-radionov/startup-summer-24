@@ -1,20 +1,13 @@
 'use client';
 
-import {
-  Card as MantineCard,
-  Stack,
-  Flex,
-  Title,
-  useMantineTheme,
-} from '@mantine/core';
+import { Card as MantineCard, Stack, Flex, Title } from '@mantine/core';
 import classes from './Card.module.css';
-import { Image } from '../ui';
+import { Image } from '@components/ui';
 import { TMovie } from '@/types/movie';
 import { TGenre } from '@/types/genre';
-import getCurrentGenres from './helpers/getCurrentGenres';
 import { StarIcon } from '@/assets/icons';
-import Detail from './components/Detail/Detail';
-import Rating from './components/Rating/Rating';
+import { Detail, Rating } from '../..';
+import { prepareGenres } from '../../helpers';
 import Link from 'next/link';
 
 type TProps = {
@@ -25,8 +18,8 @@ type TProps = {
 const Card = ({
   movie: {
     id,
-    original_title,
     poster_path,
+    original_title,
     release_date,
     vote_average,
     vote_count,
@@ -34,33 +27,26 @@ const Card = ({
   },
   genres,
 }: TProps) => {
-  const { colors } = useMantineTheme();
-
-  const currentGenres = getCurrentGenres(genre_ids, genres)
-    .map(({ name }) => name)
-    .join(', ');
+  const imageSrc = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${poster_path}`;
+  const movieYear = new Date(release_date).getFullYear();
+  const preparedGenres = prepareGenres(genres, genre_ids);
 
   return (
     <Link href={`/movies/${id}`} className={classes.link}>
-      <MantineCard className={classes.card}>
+      <MantineCard className={classes.card} w={482}>
         <Flex gap={16}>
-          <Image
-            src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${poster_path}`}
-            alt="Poster"
-            width={119}
-            height={170}
-          />
+          <Image src={imageSrc} alt="Poster" outerStyles={classes.image} />
           <Flex className={classes.content}>
             <Stack gap={8}>
               <Title className={classes.title}>{original_title}</Title>
-              <Detail name={`${new Date(release_date).getFullYear()}`} />
+              <Detail name={`${movieYear}`} />
               <Rating
                 rating={vote_average}
                 voteCount={vote_count}
-                color={colors.yellow[0]}
+                color={'var(--mantine-color-yellow-0)'}
               />
             </Stack>
-            <Detail name="Genres" value={currentGenres} />
+            <Detail name="Genres" value={preparedGenres} />
           </Flex>
         </Flex>
         <StarIcon />

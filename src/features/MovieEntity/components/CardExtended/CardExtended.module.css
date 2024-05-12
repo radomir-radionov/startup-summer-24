@@ -1,14 +1,9 @@
-.link {
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .card {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-basis: 400px;
   gap: 8px;
-  width: 482px;
   padding: 24px;
   border-radius: 16px;
 }
@@ -25,4 +20,10 @@
   font-weight: 600;
   line-height: normal;
   color: var(--mantine-color-purple-5);
+}
+
+.image {
+  max-width: 250px;
+  max-height: 352px;
+  aspect-ratio: 1;
 }

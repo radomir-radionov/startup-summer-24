@@ -1,3 +1,5 @@
+import { TGenre } from './genre';
+
 export type TMovie = {
   adult: boolean;
   backdrop_path: string | null;
@@ -13,4 +15,27 @@ export type TMovie = {
   video: boolean;
   vote_average: number;
   vote_count: number;
+};
+
+export type TMovieDetailed = {
+  id: number;
+  original_title: string;
+  poster_path: string;
+  release_date: string;
+  vote_average: number;
+  vote_count: number;
+  runtime: number;
+  budget: number;
+  revenue: number;
+  genres: TGenre[];
+  overview: string;
+  production_companies: TProductionCompanies[];
+  videos: any;
+};
+
+export type TProductionCompanies = {
+  id: number;
+  logo_path: string;
+  name: string;
+  origin_country: string;
 };
