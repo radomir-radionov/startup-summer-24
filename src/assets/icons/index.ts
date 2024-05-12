@@ -1,6 +1,6 @@
-export { default as Logo } from './Logo.svg';
+export { default as LogoIcon } from './LogoIcon.svg';
 export { default as StarIcon } from './StarIcon';
 
-export { default as Empty } from './Empty.svg';
-export { default as NotFound } from './NotFound.svg';
-export { default as NoMovie } from './NoMovie.svg';
+export { default as EmptyStateIcon } from './EmptyStateIcon.svg';
+export { default as NotFoundIcon } from './NotFoundIcon.svg';
+export { default as NoSearchedMoviesIcon } from './NoSearchedMoviesIcon.svg';

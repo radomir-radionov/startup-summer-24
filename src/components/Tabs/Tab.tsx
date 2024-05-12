@@ -6,12 +6,10 @@ type TProps = {
   text: string;
 };
 
-const Tab = ({ value, text }: TProps) => {
-  return (
-    <Tabs.Tab value={value} className={classes.tab}>
-      {text}
-    </Tabs.Tab>
-  );
-};
+const Tab = ({ value, text }: TProps) => (
+  <Tabs.Tab value={value} className={classes.tab}>
+    {text}
+  </Tabs.Tab>
+);
 
 export default Tab;

@@ -1,10 +1,5 @@
+import { Notice } from '@/components/ui';
 import { Movies } from '@/features/MovieEntity';
-import { TMovie } from '@/types/movie';
-
-type TGetMoviesRes = {
-  page: number;
-  results: TMovie[];
-};
 
 async function getMovies() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/movies`, {
@@ -38,6 +33,10 @@ export default async function Page() {
   const {
     data: { genres },
   } = await getGenres();
+
+  const a = [];
+
+  if (!a.length) return <Notice variant="noSearchedMovies" />;
 
   return (
     <>

@@ -1,5 +1,6 @@
 // pages
 export { default as MoviePage } from './pages/MoviePage/MoviePage';
+export { default as RatedMoviesPage } from './pages/RatedMoviesPage/RatedMoviesPage';
 
 // componen
 export { default as Movies } from './components/Movies/Movies';

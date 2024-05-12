@@ -2,7 +2,6 @@
 
 import { Flex } from '@mantine/core';
 import Card from '../Card/Card';
-import classes from './Movies.module.css';
 import { TMovie } from '@/types/movie';
 import { TGenre } from '@/types/genre';
 
