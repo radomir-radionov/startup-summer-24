@@ -1,0 +1,13 @@
+.anchor {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  font-feature-settings: 'clig' off, 'liga' off;
+  color: var(--mantine-color-purple-4);
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}

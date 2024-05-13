@@ -34,9 +34,7 @@ export default async function Page() {
     data: { genres },
   } = await getGenres();
 
-  const a = [];
-
-  if (!a.length) return <Notice variant="noSearchedMovies" />;
+  if (!results.length) return <Notice variant="noSearchedMovies" />;
 
   return (
     <>
