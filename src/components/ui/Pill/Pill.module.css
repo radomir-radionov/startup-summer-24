@@ -1,0 +1,9 @@
+.pill {
+  padding-left: 0;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  background: none;
+}

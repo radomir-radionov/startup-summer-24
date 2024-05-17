@@ -1,0 +1,23 @@
+.input {
+  width: 136px;
+  height: 42px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--mantine-color-grayScale-3);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  font-feature-settings: 'clig' off, 'liga' off;
+  color: var(--mantine-color-grayScale-6);
+  background: var(--mantine-color-grayScale-0);
+  caret-color: var(--mantine-color-purple-4);
+
+  &:hover {
+    border: 1px solid var(--mantine-color-purple-4);
+  }
+
+  &:focus {
+    border: 1px solid var(--mantine-color-purple-4);
+  }
+}

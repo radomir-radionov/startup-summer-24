@@ -46,8 +46,8 @@ const AdditionalInfo = ({
         <Title order={3} className={classes.title}>
           Production
         </Title>
-        {production_companies.map(({ logo_path, name }) => (
-          <Group>
+        {production_companies.map(({ id, logo_path, name }) => (
+          <Group key={id}>
             <Image
               src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${logo_path}`}
               alt="Logo production company"

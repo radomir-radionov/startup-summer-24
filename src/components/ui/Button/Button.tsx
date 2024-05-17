@@ -1,15 +1,19 @@
 import { Button as MantineButton } from '@mantine/core';
 import { ReactNode } from 'react';
 import classes from './Button.module.css';
-import Link from 'next/link';
 
 type TProps = {
-  href: string;
+  href?: string;
   children: ReactNode;
+  variant?: 'subtle';
 };
 
-const Button = ({ children }: TProps) => {
-  return <MantineButton className={classes.button}>{children}</MantineButton>;
+const Button = ({ children, variant }: TProps) => {
+  return (
+    <MantineButton variant={variant} className={classes.button}>
+      {children}
+    </MantineButton>
+  );
 };
 
 export default Button;

@@ -10,7 +10,7 @@
 
     & > .rating {
       font-feature-settings: 'clig' off, 'liga' off;
-      font-family: Inter;
+
       font-size: 16px;
       font-style: normal;
       font-weight: 600;

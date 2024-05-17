@@ -2,7 +2,7 @@
 export { default as MoviePage } from './pages/MoviePage/MoviePage';
 export { default as RatedMoviesPage } from './pages/RatedMoviesPage/RatedMoviesPage';
 
-// componen
+// components
 export { default as Movies } from './components/Movies/Movies';
 export { default as Card } from './components/Card/Card';
 export { default as CardExtended } from './components/CardExtended/CardExtended';

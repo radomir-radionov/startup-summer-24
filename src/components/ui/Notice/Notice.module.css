@@ -32,7 +32,6 @@
   gap: 16px;
 
   & > .message {
-    font-family: Inter;
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
