@@ -1,7 +1,5 @@
-import { Filters, Pagination, Sorters } from '@/components';
-import { Notice } from '@/components/ui';
-import { Movies } from '@/features/MovieEntity';
-import { Flex, Stack, Title } from '@mantine/core';
+import { Notice, Suspense } from '@/components/ui';
+import { MoviesPage } from '@/features/MovieEntity';
 
 async function getMovies(searchParams: any) {
   const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/api/movies`);
@@ -33,9 +31,17 @@ async function getGenres() {
   return res.json();
 }
 
-export default async function Page({ searchParams }: any) {
+const Page = async ({ searchParams }: any) => {
+  return (
+    <Suspense keyProp={JSON.stringify(searchParams)}>
+      <Suspended searchParams={searchParams} />
+    </Suspense>
+  );
+};
+
+async function Suspended({ searchParams }: any) {
   const {
-    data: { results, total_pages },
+    data: { results, total_results },
   } = await getMovies(searchParams);
 
   const {
@@ -45,14 +51,8 @@ export default async function Page({ searchParams }: any) {
   if (!results?.length) return <Notice variant="noSearchedMovies" />;
 
   return (
-    <Flex direction="column" gap={40} maw={980}>
-      <Title>Movies</Title>
-      <Stack gap={24}>
-        <Filters genres={genres} />
-        <Sorters />
-        <Movies movies={results} genres={genres} />
-        <Pagination totalPages={total_pages} contentPosition="flex-end" />
-      </Stack>
-    </Flex>
+    <MoviesPage movies={results} genres={genres} totalItems={total_results} />
   );
 }
+
+export default Page;

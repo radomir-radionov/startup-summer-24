@@ -1,4 +1,5 @@
 // pages
+export { default as MoviesPage } from './pages/MoviesPage/MoviesPage';
 export { default as MoviePage } from './pages/MoviePage/MoviePage';
 export { default as RatedMoviesPage } from './pages/RatedMoviesPage/RatedMoviesPage';
 

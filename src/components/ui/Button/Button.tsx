@@ -3,14 +3,20 @@ import { ReactNode } from 'react';
 import classes from './Button.module.css';
 
 type TProps = {
-  href?: string;
   children: ReactNode;
-  variant?: 'subtle';
+  type?: 'submit';
+  variant?: 'subtle' | 'filled';
+  onClick?: () => void;
 };
 
-const Button = ({ children, variant }: TProps) => {
+const Button = ({ children, type, variant, onClick }: TProps) => {
   return (
-    <MantineButton variant={variant} className={classes.button}>
+    <MantineButton
+      type={type}
+      variant={variant}
+      className={classes.button}
+      onClick={onClick}
+    >
       {children}
     </MantineButton>
   );

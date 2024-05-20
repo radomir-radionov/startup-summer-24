@@ -1,0 +1,29 @@
+.input {
+  width: 100%;
+  max-width: 490px;
+  height: 48px;
+  border: 1px solid var(--mantine-color-grayScale-1);
+  border-radius: 8px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--mantine-color-grayScale-6);
+  background: var(--mantine-color-grayScale-0);
+
+  &::placeholder {
+    color: var(--mantine-color-grayScale-5);
+  }
+}
+
+.section {
+  &[data-position='left'] {
+    padding-right: 8px;
+    padding-left: 12px;
+  }
+
+  &[data-position='right'] {
+    width: fit-content;
+    padding-right: 12px;
+  }
+}

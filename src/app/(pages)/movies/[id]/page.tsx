@@ -1,3 +1,4 @@
+import { Suspense } from '@/components/ui';
 import { MoviePage } from '@/features/MovieEntity';
 
 async function getMovieById(id: string): Promise<any> {
@@ -18,8 +19,18 @@ type TParams = {
   params: { id: string };
 };
 
-export default async function Page({ params: { id } }: TParams) {
+const Page = async ({ params }: any) => {
+  return (
+    <Suspense keyProp={JSON.stringify(params)}>
+      <Suspended params={params} />
+    </Suspense>
+  );
+};
+
+async function Suspended({ params: { id } }: TParams) {
   const movie = await getMovieById(id);
 
   return <MoviePage movie={movie} />;
 }
+
+export default Page;

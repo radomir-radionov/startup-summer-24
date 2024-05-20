@@ -5,10 +5,11 @@ import './globals.css';
 import { ColorSchemeScript } from '@mantine/core';
 
 import '@mantine/core/styles.css';
-// import { MantinProvider } from '@/providers';
 
 import { MantineProvider } from '@mantine/core';
 import theme from '@/styles/theme';
+import { ModalProvider } from '@/providers';
+import { ModalManager } from '@/components/modals';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,7 +29,12 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className={inter.className}>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+          <ModalProvider>
+            <ModalManager />
+            {children}
+          </ModalProvider>
+        </MantineProvider>
       </body>
     </html>
   );

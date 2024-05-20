@@ -1,21 +1,21 @@
-.link {
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .card {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 8px;
   height: 218px;
   padding: 24px;
   border-radius: 16px;
+  cursor: pointer;
+}
+
+.contentBox {
+  align-self: normal;
 }
 
 .content {
   flex-direction: column;
-  align-self: stretch;
   justify-content: space-between;
 }
 
@@ -31,4 +31,13 @@
   max-width: 119px;
   max-height: 170px;
   aspect-ratio: 1;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
 }

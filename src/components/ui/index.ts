@@ -11,4 +11,8 @@ export { default as Pill } from './Pill/Pill';
 export { default as Option } from './Option/Option';
 
 export { default as RatingsRange } from './RatingsRange/RatingsRange';
+
+export { default as TextInput } from './TextInput/TextInput';
 export { default as NumberInput } from './NumberInput/NumberInput';
+
+export { default as Suspense } from './Suspense/Suspense';

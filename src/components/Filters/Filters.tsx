@@ -17,8 +17,6 @@ const Filters = ({ genres }: TProps) => {
   const searchParams = useSearchParams();
   const [genresIds, setGenresIds] = useState<string[]>([]);
 
-  console.log('genresIds', genresIds);
-
   const primaryReleaseYears = generatePrimaryReleaseYears();
 
   const setUrlParams = (value: string | null) => {

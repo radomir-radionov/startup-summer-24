@@ -5,3 +5,4 @@ export { default as Breadcrumbs } from './Breadcrumbs/Breadcrumbs';
 export { default as Filters } from './Filters/Filters';
 export { default as Sorters } from './Sorters/Sorters';
 export { default as Pagination } from './Pagination/Pagination';
+export { default as SearchBar } from './SearchBar/SearchBar';
