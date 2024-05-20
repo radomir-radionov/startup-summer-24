@@ -21,7 +21,7 @@ const AdditionalInfo = ({
       gap={0}
       className={classes.additionalInfo}
     >
-      {videos.results[0].key && (
+      {!!videos.results[0]?.key && (
         <>
           <Stack>
             <Title order={3} className={classes.title}>
@@ -64,7 +64,7 @@ const AdditionalInfo = ({
                 />
               ) : (
                 <Box className={classes.iconBox}>
-                  <Icons.clapperboardIcon color="var(--mantine-color-grayScale-6)" />
+                  <Icons.clapperboardIcon color="var(--mantine-color-grayScale-4)" />
                 </Box>
               )}
               <Title order={4}>{name}</Title>

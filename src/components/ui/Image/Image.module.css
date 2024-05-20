@@ -7,3 +7,17 @@
     object-fit: contain;
   }
 }
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--mantine-color-grayScale-0);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--mantine-color-grayScale-4);
+  background: var(--mantine-color-grayScale-2);
+}

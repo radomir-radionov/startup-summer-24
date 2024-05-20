@@ -5,11 +5,18 @@ import './globals.css';
 import { ColorSchemeScript } from '@mantine/core';
 
 import '@mantine/core/styles.css';
-
+import dynamic from 'next/dynamic';
 import { MantineProvider } from '@mantine/core';
 import theme from '@/styles/theme';
 import { ModalProvider } from '@/providers';
 import { ModalManager } from '@/components/modals';
+
+const RatedMoviesProvider = dynamic(
+  () => import('@/providers').then((mod) => mod.RatedMoviesProvider),
+  {
+    ssr: false,
+  }
+);
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -30,10 +37,12 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <MantineProvider theme={theme}>
-          <ModalProvider>
-            <ModalManager />
-            {children}
-          </ModalProvider>
+          <RatedMoviesProvider>
+            <ModalProvider>
+              <ModalManager />
+              {children}
+            </ModalProvider>
+          </RatedMoviesProvider>
         </MantineProvider>
       </body>
     </html>

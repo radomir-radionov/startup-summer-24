@@ -9,35 +9,17 @@ import { TMovie } from '@/types/movie';
 import { Notice } from '@/components/ui';
 import { useSearchParams } from 'next/navigation';
 import classes from './RatedMoviesPage.module.css';
+import { useRatedMovies } from '@/providers/RatedMoviesProvider/RatedMoviesProvider';
 
 type TProps = {
   genres: TGenre[];
 };
 const RatedMoviesPage = ({ genres }: TProps) => {
   const searchParams = useSearchParams();
-  const [ratedMovies, setRatedMovies] = useState<TMovie[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { ratedMovies } = useRatedMovies();
+  const [searchedMovies, setSearchedMovies] = useState<TMovie[]>([]);
 
   const currentPage = searchParams.get('page') ?? 1;
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    const storedData = localStorage.getItem('ratedMovies');
-
-    if (storedData) {
-      setRatedMovies(JSON.parse(storedData));
-    }
-    setIsLoading(false);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <Center h="100%">
-        <Loader />
-      </Center>
-    );
-  }
 
   if (!ratedMovies.length) {
     return <Notice variant="emptyState" />;
@@ -47,10 +29,11 @@ const RatedMoviesPage = ({ genres }: TProps) => {
   const endIndex = startIndex + 4;
 
   const movies = ratedMovies.slice(startIndex, endIndex);
+  const currentMovies = searchedMovies.length ? searchedMovies : movies;
 
   const handleOnSubmit = (value: string) => {
     if (value) {
-      setRatedMovies(
+      setSearchedMovies(
         ratedMovies?.filter((movie) =>
           movie.original_title.toLowerCase().includes(value.toLowerCase())
         )
@@ -58,7 +41,7 @@ const RatedMoviesPage = ({ genres }: TProps) => {
     } else {
       const ratedMoviesJson = localStorage.getItem('ratedMovies');
       const ratedMovies = ratedMoviesJson ? JSON.parse(ratedMoviesJson) : [];
-      setRatedMovies(ratedMovies);
+      setSearchedMovies(ratedMovies);
     }
   };
 
@@ -68,7 +51,7 @@ const RatedMoviesPage = ({ genres }: TProps) => {
         <Title>Rated movies</Title>
         <SearchBar onSubmit={handleOnSubmit} />
       </Box>
-      <Movies movies={movies} genres={genres} />
+      <Movies movies={currentMovies} genres={genres} />
       <Pagination totalItems={ratedMovies.length} itemsPerPage={4} />
     </Flex>
   );

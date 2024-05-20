@@ -27,6 +27,10 @@
   height: 40px;
   border: 0.5px solid var(--mantine-color-grayScale-2);
   border-radius: 40px;
+
+  & > img {
+    border-radius: 39.5px;
+  }
 }
 
 .iconBox {

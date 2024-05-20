@@ -5,7 +5,7 @@ import { Group, Rating, UnstyledButton, Text, Stack } from '@mantine/core';
 import classes from './RatingMovieModal.module.css';
 import Icons from '@/assets/icons';
 import { useState } from 'react';
-import { ratedMoviesService } from '@/services';
+import { useRatedMovies } from '@/providers/RatedMoviesProvider/RatedMoviesProvider';
 
 type TProps = {
   payload: any;
@@ -19,21 +19,21 @@ const RatingMovieModal = ({
   onClose,
 }: TProps) => {
   const [rating, setRating] = useState(movie.rating ?? 0);
+  const { addRatedMovie, updateRatedMovie, deleteRatedMovie } =
+    useRatedMovies();
 
   const handleSaveClick = () => {
     movie.rating
-      ? ratedMoviesService.updateRatedMovie(movie.id, rating)
-      : ratedMoviesService.addRatedMovie(movie, rating);
+      ? updateRatedMovie(movie.id, rating)
+      : addRatedMovie({ ...movie, rating });
 
     onClose();
-    window.location.reload();
   };
 
   const handleRemoveRatingClick = () => {
-    ratedMoviesService.deleteRatedMovie(movie.id);
+    deleteRatedMovie(movie.id);
 
     onClose();
-    window.location.reload();
   };
 
   return (

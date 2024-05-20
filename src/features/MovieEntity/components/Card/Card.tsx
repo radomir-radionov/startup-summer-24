@@ -8,6 +8,7 @@ import {
   UnstyledButton,
   Text,
 } from '@mantine/core';
+import { MouseEvent, MouseEventHandler } from 'react';
 import classes from './Card.module.css';
 import { Image } from '@components/ui';
 import { TMovie } from '@/types/movie';
@@ -46,14 +47,21 @@ const Card = ({ movie, genres }: TProps) => {
 
   const handleCardClick = () => router.push(`/movies/${id}`);
 
+  const handleRatingClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+    openModal(MODAL_TYPES.RATING_MOVIE_MODAL, { movie: movieClone });
+  };
+
   return (
     <MantineCard className={classes.card} w={482} onClick={handleCardClick}>
       <Flex className={classes.contentBox} gap={16}>
         <Image src={imageSrc} alt="Poster" outerStyles={classes.image} />
         <Flex className={classes.content}>
           <Stack gap={8}>
-            <Title className={classes.title}>{original_title}</Title>
-            <Detail name={`${movieYear}`} />
+            <Title className={classes.title}>
+              {original_title || 'Not indicated'}
+            </Title>
+            <Detail name={`${movieYear || 'Not indicated'}`} />
             <Rating
               rating={vote_average}
               voteCount={vote_count}
@@ -63,12 +71,7 @@ const Card = ({ movie, genres }: TProps) => {
           <Detail name="Genres" value={preparedGenres} />
         </Flex>
       </Flex>
-      <UnstyledButton
-        onClick={(e) => {
-          e.stopPropagation();
-          openModal(MODAL_TYPES.RATING_MOVIE_MODAL, { movie: movieClone });
-        }}
-      >
+      <UnstyledButton onClick={handleRatingClick}>
         {movie.rating ? (
           <Text className={classes.rating}>
             <StarIcon color="var(--mantine-color-purple-4)" />

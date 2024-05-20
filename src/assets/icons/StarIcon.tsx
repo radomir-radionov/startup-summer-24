@@ -1,10 +1,4 @@
-import { ComponentProps, FC } from 'react';
-
-interface TProps extends ComponentProps<'svg'> {
-  fill?: string;
-}
-
-const StarIcon = ({ color = '#D5D6DC', ...props }: TProps) => {
+const StarIcon = ({ color = '#D5D6DC', ...props }: ReactTagProps<'svg'>) => {
   return (
     <svg
       width="28"

@@ -9,7 +9,7 @@ type TProps = {
 const Detail = ({ name, value }: TProps) => (
   <Text className={classes.detail}>
     <Text component="span">{name}</Text>
-    {value && <Text component="span">{value}</Text>}
+    <Text component="span">{value}</Text>
   </Text>
 );
 

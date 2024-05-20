@@ -1,9 +1,10 @@
 'use client';
 
 import NextImage, { ImageProps } from 'next/image';
-import { Image as MantineImage } from '@mantine/core';
+import { Box, Image as MantineImage, Text } from '@mantine/core';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import classes from './Image.module.css';
+import Icons from '@/assets/icons';
 
 type TProps = {
   outerStyles?: string;
@@ -12,7 +13,7 @@ type TProps = {
 
 const Image = ({ src, alt, outerStyles, ...props }: TProps) => {
   return src ? (
-    <div className={`${classes.wrapper} ${outerStyles}`}>
+    <Box className={`${classes.wrapper} ${outerStyles}`}>
       <MantineImage
         component={NextImage}
         src={src}
@@ -21,9 +22,12 @@ const Image = ({ src, alt, outerStyles, ...props }: TProps) => {
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         {...props}
       />
-    </div>
+    </Box>
   ) : (
-    <div></div>
+    <Box className={`${classes.placeholder} ${outerStyles}`}>
+      <Icons.noPosterIcon color="var(--mantine-color-grayScale-4)" />
+      <Text>No Poster</Text>
+    </Box>
   );
 };
 

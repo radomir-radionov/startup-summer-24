@@ -32,6 +32,7 @@ export type TMovieDetailed = {
   overview: string;
   production_companies: TProductionCompanies[];
   videos: any;
+  rating?: number;
 };
 
 export type TProductionCompanies = {

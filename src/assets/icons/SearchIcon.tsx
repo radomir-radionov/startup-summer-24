@@ -1,10 +1,4 @@
-import { ComponentProps } from 'react';
-
-interface TProps extends ComponentProps<'svg'> {
-  fill?: string;
-}
-
-const SearchIcon = ({ ...props }: TProps) => {
+const SearchIcon = (props: ReactTagProps<'svg'>) => {
   return (
     <svg
       width="16"

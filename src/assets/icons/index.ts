@@ -3,6 +3,7 @@ import ChevronUpIcon from './ChevronUpIcon';
 import CloseIcon from './CloseIcon';
 import SearchIcon from './SearchIcon';
 import ClapperboardIcon from './ClapperboardIcon';
+import NoPosterIcon from './NoPosterIcon';
 
 export { default as LogoIcon } from './LogoIcon.svg';
 export { default as StarIcon } from './StarIcon';
@@ -17,6 +18,7 @@ const Icons = {
   closeIcon: CloseIcon,
   searchIcon: SearchIcon,
   clapperboardIcon: ClapperboardIcon,
+  noPosterIcon: NoPosterIcon,
 };
 
 export default Icons;

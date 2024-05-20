@@ -5,8 +5,7 @@ import { Flex, Stack, Title } from '@mantine/core';
 import { Movies } from '../..';
 import { TMovie } from '@/types/movie';
 import { TGenre } from '@/types/genre';
-import { ratedMoviesService } from '@/services';
-import { useEffect, useState } from 'react';
+import { useRatedMovies } from '@/providers/RatedMoviesProvider/RatedMoviesProvider';
 
 type TProps = {
   movies: TMovie[];
@@ -15,14 +14,10 @@ type TProps = {
 };
 
 const MoviesPage = ({ movies, genres, totalItems }: TProps) => {
-  const [ratedMovies, setRatedMovies] = useState<TMovie[]>([]);
+  const { ratedMovies } = useRatedMovies();
 
   const updates = new Map(ratedMovies.map((item) => [item.id, item]));
   const mergedAMovies = movies.map((item) => updates.get(item.id) || item);
-
-  useEffect(() => {
-    setRatedMovies(ratedMoviesService.getRatedMovies());
-  }, []);
 
   return (
     <Flex direction="column" gap={40} maw={980}>

@@ -1,11 +1,16 @@
 .card {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   justify-content: space-between;
   flex-basis: 400px;
   gap: 8px;
   padding: 24px;
   border-radius: 16px;
+}
+
+.contentBox {
+  align-self: normal;
 }
 
 .content {
@@ -26,4 +31,13 @@
   max-width: 250px;
   max-height: 352px;
   aspect-ratio: 1;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
 }
