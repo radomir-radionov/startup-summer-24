@@ -1,69 +1,98 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { Button, Dropdown, RatingsRange, Select } from '../ui';
+import { Button } from '../ui';
 import { TGenre } from '@/types/genre';
-import generatePrimaryReleaseYears from './helpers/generatePrimaryReleaseYears';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import prepareReleaseYears from './helpers/prepareReleaseYears';
+import { useSearchParams } from 'next/navigation';
 import { Flex } from '@mantine/core';
+import { useForm } from '@mantine/form';
+import { useFiltersParams } from '@/hooks';
+import { GenresFilter, RatingsFilter, ReleaseYearFilter } from '..';
+import { useEffect, useMemo } from 'react';
 
 type TProps = {
   genres: TGenre[];
 };
 
 const Filters = ({ genres }: TProps) => {
-  const { replace } = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [genresIds, setGenresIds] = useState<string[]>([]);
+  const { onFiltersParamsReset } = useFiltersParams();
 
-  const primaryReleaseYears = generatePrimaryReleaseYears();
+  const preparedGenres = genres.map((genre) => ({
+    id: genre.id,
+    value: genre.id.toString(),
+    label: genre.name,
+  }));
 
-  const setUrlParams = (value: string | null) => {
-    const params = new URLSearchParams(searchParams);
+  const form = useForm({
+    initialValues: {
+      genresIds: searchParams.get('with_genres')?.toString().split(',') || [],
+      releaseYear: searchParams.get('primary_release_year')?.toString(),
+      rating: {
+        voteAverageGte: searchParams.get('vote_average.gte')?.toString() ?? '',
+        voteAverageLte: searchParams.get('vote_average.lte')?.toString() ?? '',
+      },
+    },
+    validateInputOnChange: true,
+    validate: {
+      rating: {
+        voteAverageGte: (value, values) =>
+          parseFloat(value) > parseFloat(values.rating.voteAverageLte) &&
+          'GTE value must be less than or equal to LTE value',
+        voteAverageLte: (value, values) =>
+          parseFloat(value) < parseFloat(values.rating.voteAverageGte) &&
+          'LTE value must be greater than or equal to GTE value',
+      },
+    },
+  });
 
-    value ? params.set('with_genres', value) : params.delete('with_genres');
+  const noValues =
+    !form.values.genresIds.length &&
+    !form.values.releaseYear &&
+    !form.values.rating.voteAverageGte &&
+    !form.values.rating.voteAverageLte;
 
-    replace(`${pathname}?${params.toString()}`);
-  };
+  console.log(22, form.values.releaseYear);
+  console.log('noValues', noValues);
 
-  const handleReleaseDateChange = (value: string | null) => {
-    const params = new URLSearchParams(searchParams);
+  const formIsValid = useMemo(
+    () => Object.keys(form.errors).length === 0,
+    [form.errors]
+  );
 
-    value
-      ? params.set('primary_release_year', value)
-      : params.delete('primary_release_year');
-
-    replace(`${pathname}?${params.toString()}`);
-  };
-
+  console.log('formIsValid', formIsValid);
   useEffect(() => {
-    setUrlParams(genresIds.toString());
-  }, [genresIds, setUrlParams]);
+    form.validateField('rating.voteAverageGte');
+    form.validateField('rating.voteAverageLte');
+  }, [form.values.rating.voteAverageGte, form.values.rating.voteAverageLte]);
 
   return (
-    <Flex align="flex-end" gap={16}>
-      <Dropdown
-        label="Genres"
-        placeholder={!genresIds.length ? 'Select genre' : ''}
-        data={genres.map((genre) => ({
-          id: genre.id,
-          value: genre.id.toString(),
-          label: genre.name,
-        }))}
-        value={genresIds}
-        onChange={setGenresIds}
-        defaultValue={searchParams.get('with_genres')?.toString()}
+    <Flex align="flex-end" gap={16} wrap="wrap">
+      <GenresFilter
+        formKey={form.key('genresIds')}
+        value={form.values.genresIds}
+        options={preparedGenres}
       />
-      <Select
-        onChange={handleReleaseDateChange}
-        label="Release year"
-        placeholder="Select release year"
-        data={primaryReleaseYears}
-        defaultValue={searchParams.get('primary_release_year')?.toString()}
+      <ReleaseYearFilter
+        formKey={form.key('releaseYear')}
+        value={form.values.releaseYear}
+        options={prepareReleaseYears()}
       />
-      <RatingsRange />
-      <Button variant="subtle">Reset filters</Button>
+      <RatingsFilter
+        form={form}
+        gteValue={form.values.rating.voteAverageGte}
+        lteValue={form.values.rating.voteAverageLte}
+      />
+      <Button
+        variant="subtle"
+        onClick={() => {
+          onFiltersParamsReset();
+          form.reset();
+        }}
+        disabled={noValues || !formIsValid}
+      >
+        Reset filters
+      </Button>
     </Flex>
   );
 };

@@ -14,7 +14,7 @@ async function getGenres() {
 
 async function Page() {
   const {
-    data: { genres },
+    data: {},
   } = await getGenres();
 
   return <RatedMoviesPage genres={genres} />;

@@ -19,6 +19,7 @@ type TProps = {
   data: TCustomGenre[];
   value: string[];
   onChange: any;
+  onRemove: any;
   defaultValue?: string;
 };
 
@@ -34,6 +35,7 @@ const Dropdown = ({
   data,
   value,
   onChange,
+  onRemove,
   defaultValue,
 }: TProps) => {
   const [dropdownOpened, { toggle }] = useDisclosure();
@@ -47,22 +49,10 @@ const Dropdown = ({
 
   const existingGenres = data.filter((item) => value.includes(item.value));
 
-  const handleValueSelect = (val: string) => {
-    onChange((current: string[]) =>
-      current.includes(val)
-        ? current.filter((v) => v !== val)
-        : [...current, val]
-    );
-
-    combobox.updateSelectedOptionIndex('active');
-  };
-
-  const handleValueRemove = (id: number) => {
-    onChange((current: string[]) => current.filter((item) => item !== `${id}`));
-  };
+  // combobox.updateSelectedOptionIndex('active');
 
   return (
-    <Combobox store={combobox} onOptionSubmit={handleValueSelect}>
+    <Combobox store={combobox} onOptionSubmit={onChange}>
       <Combobox.Target>
         <InputBase
           component="div"
@@ -95,7 +85,7 @@ const Dropdown = ({
                       component="span"
                       onClick={(e) => {
                         e.stopPropagation();
-                        handleValueRemove(genre.id);
+                        onRemove(genre.id);
                       }}
                     >
                       {genre.label}

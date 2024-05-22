@@ -1,4 +1,4 @@
-const generatePrimaryReleaseYears = () => {
+const prepareReleaseYears = () => {
   const currentYear = new Date().getFullYear();
   const years = [];
 
@@ -10,4 +10,4 @@ const generatePrimaryReleaseYears = () => {
   return years;
 };
 
-export default generatePrimaryReleaseYears;
+export default prepareReleaseYears;

@@ -10,7 +10,6 @@ const Select = (props: TProps) => {
 
   return (
     <MantineSelect
-      {...props}
       classNames={classes}
       onDropdownOpen={toggle}
       onDropdownClose={toggle}
@@ -22,6 +21,7 @@ const Select = (props: TProps) => {
         )
       }
       withCheckIcon={false}
+      {...props}
     />
   );
 };

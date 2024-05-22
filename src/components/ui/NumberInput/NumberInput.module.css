@@ -1,3 +1,7 @@
+.wrapper {
+  margin: 0;
+}
+
 .input {
   width: 136px;
   height: 42px;
@@ -20,4 +24,13 @@
   &:focus {
     border: 1px solid var(--mantine-color-purple-4);
   }
+
+  &[aria-invalid='true'] {
+    border: 1px solid red;
+  }
+}
+
+.error {
+  position: absolute;
+  width: 136px;
 }
