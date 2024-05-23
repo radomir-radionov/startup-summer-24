@@ -1,6 +1,6 @@
 'use client';
 
-import { createTheme } from '@mantine/core';
+import { createTheme, rem } from '@mantine/core';
 
 const theme = createTheme({
   colors: {
@@ -29,6 +29,21 @@ const theme = createTheme({
       '',
     ],
     yellow: ['#FAB005', '', '', '', '', '', '', '', '', ''],
+  },
+  headings: {
+    sizes: {
+      h2: {
+        fontSize: rem(32),
+        lineHeight: 'var(--mantine-line-height-md)',
+      },
+    },
+  },
+  lineHeights: {
+    xs: '1.2',
+    sm: '1.3',
+    md: '1.4',
+    lg: '1.5',
+    xl: '1.6',
   },
 });
 

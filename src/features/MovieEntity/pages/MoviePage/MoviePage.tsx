@@ -13,7 +13,7 @@ type TProps = {
 
 const MoviePage = ({ movie }: TProps) => {
   const paths = usePathname();
-
+  console.log('movie', movie);
   const pathNames = paths.split('/').filter((path) => path);
   const { overview, production_companies, videos } = movie;
   const additionalInfo = { overview, production_companies, videos };

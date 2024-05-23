@@ -12,7 +12,11 @@ import { Image } from '@components/ui';
 import { TMovie, TMovieDetailed } from '@/types/movie';
 import { StarIcon } from '@/assets/icons';
 import { Details, Detail, Rating } from '../..';
-import { prepareDetails } from '../../helpers';
+import {
+  prepareDetails,
+  prepareVoteAverage,
+  validateImageUrl,
+} from '../../helpers';
 import classes from './CardExtended.module.css';
 import { MouseEventHandler } from 'react';
 import { MODAL_TYPES } from '@/components/modals/ModalManager';
@@ -46,7 +50,10 @@ const CardExtended = ({ movie }: TProps) => {
   const currentRating = ratedMovie ? ratedMovie.rating : rating;
 
   const imageSrc = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${poster_path}`;
+  const validatedImageSrc = validateImageUrl(imageSrc);
+
   const movieYear = new Date(release_date).getFullYear();
+  const preparedVoteAverage = prepareVoteAverage(vote_average);
   const preparedDetails = prepareDetails(
     runtime,
     release_date,
@@ -63,7 +70,11 @@ const CardExtended = ({ movie }: TProps) => {
   return (
     <MantineCard className={classes.card}>
       <Flex gap={16} className={classes.contentBox}>
-        <Image src={imageSrc} alt="Poster" outerStyles={classes.image} />
+        <Image
+          src={validatedImageSrc}
+          alt="Poster"
+          outerStyles={classes.image}
+        />
         <Flex className={classes.content}>
           <Stack gap={8}>
             <Title className={classes.title}>
@@ -71,7 +82,7 @@ const CardExtended = ({ movie }: TProps) => {
             </Title>
             <Detail name={`${movieYear}`} />
             <Rating
-              rating={vote_average}
+              rating={preparedVoteAverage}
               voteCount={vote_count}
               color={'var(--mantine-color-yellow-0)'}
             />

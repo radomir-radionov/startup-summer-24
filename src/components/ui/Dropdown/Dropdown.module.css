@@ -7,7 +7,6 @@
 
 .label {
   font-size: 16px;
-  font-style: normal;
   font-weight: 700;
   line-height: 140%;
 }
@@ -29,26 +28,6 @@
 
 .options {
   overflow-y: auto;
-}
-
-.option {
-  padding: 8px 12px;
-  border-radius: 8px;
-
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px;
-  font-feature-settings: 'clig' off, 'liga' off;
-
-  &[data-combobox-active='true'] {
-    color: var(--mantine-color-grayScale-0);
-    background-color: var(--mantine-color-purple-4);
-  }
-
-  &:hover {
-    background-color: var(--mantine-color-purple-1);
-  }
 }
 
 .selectOptions {

@@ -49,10 +49,14 @@ const Dropdown = ({
 
   const existingGenres = data.filter((item) => value.includes(item.value));
 
-  // combobox.updateSelectedOptionIndex('active');
-
   return (
-    <Combobox store={combobox} onOptionSubmit={onChange}>
+    <Combobox
+      store={combobox}
+      onOptionSubmit={(value: string) => {
+        onChange(value);
+        combobox.updateSelectedOptionIndex('active');
+      }}
+    >
       <Combobox.Target>
         <InputBase
           component="div"
@@ -67,7 +71,10 @@ const Dropdown = ({
             )
           }
           rightSectionPointerEvents="none"
-          onClick={() => combobox.toggleDropdown()}
+          onClick={() => {
+            combobox.updateSelectedOptionIndex('active');
+            combobox.toggleDropdown();
+          }}
           classNames={classes}
           defaultValue={defaultValue}
         >

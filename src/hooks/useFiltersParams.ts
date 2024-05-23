@@ -15,7 +15,15 @@ const useFiltersParams = () => {
     replace(`${pathname}?${params}`, { scroll: false });
   };
 
-  const handleReset = () => replace(pathname, { scroll: false });
+  const handleReset = (preserveKey?: string) => {
+    const newParams = new URLSearchParams();
+
+    if (preserveKey && params.has(preserveKey)) {
+      newParams.set(preserveKey, params.get(preserveKey) as string);
+    }
+
+    replace(`${pathname}?${newParams}`, { scroll: false });
+  };
 
   return {
     onFilterParamChange: handleChange,

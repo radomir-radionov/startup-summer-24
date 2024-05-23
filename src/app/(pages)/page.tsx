@@ -1,4 +1,4 @@
-import { Notice, Suspense } from '@/components/ui';
+import { Suspense } from '@/components/ui';
 import { MoviesPage } from '@/features/MovieEntity';
 
 async function getMovies(searchParams: any) {
@@ -47,8 +47,6 @@ async function Suspended({ searchParams }: any) {
   const {
     data: { genres },
   } = await getGenres();
-
-  if (!results?.length) return <Notice variant="noSearchedMovies" />;
 
   return (
     <MoviesPage movies={results} genres={genres} totalItems={total_results} />

@@ -1,9 +1,7 @@
-'use client';
-
 import { Group } from '@mantine/core';
 import classes from './RatingsFilter.module.css';
 import { NumberInput } from '@/components/ui';
-import { useFiltersParams } from '@/hooks';
+import { useDebounce, useFiltersParams } from '@/hooks';
 
 type TProps = {
   form: any;
@@ -13,6 +11,30 @@ type TProps = {
 
 const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
   const { onFilterParamChange } = useFiltersParams();
+  const debouncedFilterParamChange = useDebounce(onFilterParamChange, 500);
+
+  console.log('form.errors', form.errors);
+  console.log(111, !!form.errors);
+
+  const isErrorObjectEmpty = (obj: any) => Object.entries(obj).length === 0;
+
+  console.log('isErrorObjectEmpty', isErrorObjectEmpty(form.errors));
+
+  const handleGteChange = (value: string | null) => {
+    if (value !== null) {
+      form.setFieldValue('rating.voteAverageGte', value);
+
+      form.errors && debouncedFilterParamChange(value, 'vote_average.gte');
+    }
+  };
+
+  const handleLteChange = (value: string | null) => {
+    if (value !== null) {
+      form.setFieldValue('rating.voteAverageLte', value);
+
+      form.errors && debouncedFilterParamChange(value, 'vote_average.lte');
+    }
+  };
 
   return (
     <div className={classes.container}>
@@ -20,10 +42,7 @@ const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
       <Group gap={8}>
         <NumberInput
           value={gteValue}
-          onChange={(value) => {
-            form.setFieldValue('rating.voteAverageGte', value);
-            // onFilterParamChange(`${value}`, 'vote_average.gte');
-          }}
+          onChange={(value) => handleGteChange(value as string)}
           placeholder="From"
           min={0}
           max={10}
@@ -32,10 +51,7 @@ const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
         />
         <NumberInput
           value={lteValue}
-          onChange={(value) => {
-            form.setFieldValue('rating.voteAverageLte', value);
-            // onFilterParamChange(`${value}`, 'vote_average.lte');
-          }}
+          onChange={(value) => handleLteChange(value as string)}
           placeholder="To"
           min={0}
           max={10}

@@ -7,7 +7,7 @@ const NoPosterIcon = ({ color = '#ACADB9' }: ReactTagProps<'svg'>) => {
       viewBox="0 0 25 24"
       fill="none"
     >
-      <g clip-path="url(#clip0_18128_981)">
+      <g clipPath="url(#clip0_18128_981)">
         <path
           d="M15.5 8H15.51"
           stroke={color}

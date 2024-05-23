@@ -48,7 +48,7 @@ const RatedMoviesPage = ({ genres }: TProps) => {
   return (
     <Flex direction="column" gap={40} maw={980}>
       <Box className={classes.header}>
-        <Title>Rated movies</Title>
+        <Title order={2}>Rated movies</Title>
         <SearchBar onSubmit={handleOnSubmit} />
       </Box>
       <Movies movies={currentMovies} genres={genres} />

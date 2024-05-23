@@ -38,10 +38,10 @@ const Filters = ({ genres }: TProps) => {
       rating: {
         voteAverageGte: (value, values) =>
           parseFloat(value) > parseFloat(values.rating.voteAverageLte) &&
-          'GTE value must be less than or equal to LTE value',
+          'GTE must be less than or equal to LTE',
         voteAverageLte: (value, values) =>
           parseFloat(value) < parseFloat(values.rating.voteAverageGte) &&
-          'LTE value must be greater than or equal to GTE value',
+          'LTE must be greater than or equal to GTE',
       },
     },
   });
@@ -52,15 +52,16 @@ const Filters = ({ genres }: TProps) => {
     !form.values.rating.voteAverageGte &&
     !form.values.rating.voteAverageLte;
 
-  console.log(22, form.values.releaseYear);
-  console.log('noValues', noValues);
-
   const formIsValid = useMemo(
     () => Object.keys(form.errors).length === 0,
     [form.errors]
   );
 
-  console.log('formIsValid', formIsValid);
+  const handleButtonResetClick = () => {
+    onFiltersParamsReset('sort_by');
+    form.reset();
+  };
+
   useEffect(() => {
     form.validateField('rating.voteAverageGte');
     form.validateField('rating.voteAverageLte');
@@ -85,10 +86,7 @@ const Filters = ({ genres }: TProps) => {
       />
       <Button
         variant="subtle"
-        onClick={() => {
-          onFiltersParamsReset();
-          form.reset();
-        }}
+        onClick={handleButtonResetClick}
         disabled={noValues || !formIsValid}
       >
         Reset filters
