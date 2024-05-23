@@ -1,11 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Movies } from '../..';
 import { TGenre } from '@/types/genre';
-import { Flex, Box, Title, Loader, Center } from '@mantine/core';
+import { Flex, Box, Title } from '@mantine/core';
 import { Pagination, SearchBar } from '@/components';
-import { TMovie } from '@/types/movie';
 import { Notice } from '@/components/ui';
 import { useSearchParams } from 'next/navigation';
 import classes from './RatedMoviesPage.module.css';
@@ -14,36 +12,31 @@ import { useRatedMovies } from '@/providers/RatedMoviesProvider/RatedMoviesProvi
 type TProps = {
   genres: TGenre[];
 };
+
 const RatedMoviesPage = ({ genres }: TProps) => {
   const searchParams = useSearchParams();
-  const { ratedMovies } = useRatedMovies();
-  const [searchedMovies, setSearchedMovies] = useState<TMovie[]>([]);
+  const {
+    ratedMovies,
+    searchedRatedMovies,
+    setInitialSearchedRatedMovies,
+    updateSearchedRatedMovies,
+  } = useRatedMovies();
 
   const currentPage = searchParams.get('page') ?? 1;
-
-  if (!ratedMovies.length) {
-    return <Notice variant="emptyState" />;
-  }
-
   const startIndex = (+currentPage - 1) * 4;
   const endIndex = startIndex + 4;
 
-  const movies = ratedMovies.slice(startIndex, endIndex);
-  const currentMovies = searchedMovies.length ? searchedMovies : movies;
+  const movies = searchedRatedMovies.slice(startIndex, endIndex);
 
   const handleOnSubmit = (value: string) => {
     if (value) {
-      setSearchedMovies(
-        ratedMovies?.filter((movie) =>
-          movie.original_title.toLowerCase().includes(value.toLowerCase())
-        )
-      );
+      updateSearchedRatedMovies(value);
     } else {
-      const ratedMoviesJson = localStorage.getItem('ratedMovies');
-      const ratedMovies = ratedMoviesJson ? JSON.parse(ratedMoviesJson) : [];
-      setSearchedMovies(ratedMovies);
+      setInitialSearchedRatedMovies();
     }
   };
+
+  if (!ratedMovies.length) return <Notice variant="emptyState" />;
 
   return (
     <Flex direction="column" gap={40} maw={980}>
@@ -51,8 +44,17 @@ const RatedMoviesPage = ({ genres }: TProps) => {
         <Title order={2}>Rated movies</Title>
         <SearchBar onSubmit={handleOnSubmit} />
       </Box>
-      <Movies movies={currentMovies} genres={genres} />
-      <Pagination totalItems={ratedMovies.length} itemsPerPage={4} />
+      {searchedRatedMovies.length ? (
+        <>
+          <Movies movies={movies} genres={genres} />
+          <Pagination
+            totalItems={searchedRatedMovies.length}
+            itemsPerPage={4}
+          />
+        </>
+      ) : (
+        <Notice variant="noSearchedMovies" />
+      )}
     </Flex>
   );
 };

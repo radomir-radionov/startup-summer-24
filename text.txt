@@ -1,58 +1,58 @@
-font-size: 32px;
-font-style: normal;
+font-size: var(--mantine-font-size-lg)px;
+  
 font-weight: 700;
 line-height: 140%;
 
 /* Title S/Semibold */
-font-size: 20px;
-font-style: normal;
+font-size: var(--mantine-font-size-md)px;
+  
 font-weight: 600;
 line-height: normal;
 
-font-size: 20px;
-font-style: normal;
+font-size: var(--mantine-font-size-md)px;
+  
 font-weight: 700;
 line-height: 20px; 
 
 /* Text base M/Bold */
-font-size: 16px;
-font-style: normal;
+font-size: var(--mantine-font-size-sm)px;
+  
 font-weight: 700;
 line-height: 140%; 
 
-font-size: 16px;
-font-style: normal;
+font-size: var(--mantine-font-size-sm)px;
+  
 font-weight: 600;
 line-height: 20px;
 
 /* Text base M/Regular */
-font-size: 16px;
-font-style: normal;
+font-size: var(--mantine-font-size-sm)px;
+  
 font-weight: 400;
 line-height: 140%; 
 
-font-size: 16px;
-font-style: normal;
+font-size: var(--mantine-font-size-sm)px;
+  
 font-weight: 400;
 line-height: normal;
 
-font-size: 16px;
-font-style: normal;
+font-size: var(--mantine-font-size-sm)px;
+  
 font-weight: 400;
 line-height: 20px;
 
-font-size: 14px;
-font-style: normal;
+font-size: var(--mantine-font-size-xs)px;
+  
 font-weight: 500;
 line-height: 20px;
 
 /* Text base S/Subtitle S */
-font-size: 14px;
-font-style: normal;
+font-size: var(--mantine-font-size-xs)px;
+  
 font-weight: 400;
 line-height: 20px;
 
-font-size: 14px;
-font-style: normal;
+font-size: var(--mantine-font-size-xs)px;
+  
 font-weight: 600;
 line-height: 140%; /* 19.6px */

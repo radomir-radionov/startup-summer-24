@@ -1,8 +1,8 @@
 .pill {
   padding-left: 0;
 
-  font-size: 14px;
-  font-style: normal;
+  font-size: var(--mantine-font-size-xs);
+
   font-weight: 400;
   line-height: 20px;
   background: none;

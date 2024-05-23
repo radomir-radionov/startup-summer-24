@@ -6,8 +6,8 @@
 }
 
 .label {
-  font-size: 16px;
-  font-style: normal;
+  font-size: var(--mantine-font-size-sm);
+
   font-weight: 700;
   line-height: 140%;
 }
@@ -17,12 +17,11 @@
   padding: 8px 12px;
   border: 1px solid var(--mantine-color-grayScale-3);
   border-radius: 8px;
-  font-size: 14px;
-  font-style: normal;
+  font-size: var(--mantine-font-size-xs);
+
   font-weight: 400;
   line-height: 20px;
   background: var(--mantine-color-grayScale-0);
-  font-feature-settings: 'clig' off, 'liga' off;
 
   &[data-expanded='true'] {
     border: 1px solid var(--mantine-color-purple-4);
@@ -36,11 +35,10 @@
 .option {
   padding: 8px 12px;
   border-radius: 8px;
-  font-size: 14px;
-  font-style: normal;
+  font-size: var(--mantine-font-size-xs);
+
   font-weight: 400;
   line-height: 20px;
-  font-feature-settings: 'clig' off, 'liga' off;
 
   &[data-combobox-active='true'] {
     color: var(--mantine-color-grayScale-0);

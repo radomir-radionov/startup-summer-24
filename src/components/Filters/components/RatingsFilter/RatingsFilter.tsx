@@ -1,4 +1,4 @@
-import { Group } from '@mantine/core';
+import { Group, Stack, Text } from '@mantine/core';
 import classes from './RatingsFilter.module.css';
 import { NumberInput } from '@/components/ui';
 import { useDebounce, useFiltersParams } from '@/hooks';
@@ -12,13 +12,6 @@ type TProps = {
 const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
   const { onFilterParamChange } = useFiltersParams();
   const debouncedFilterParamChange = useDebounce(onFilterParamChange, 500);
-
-  console.log('form.errors', form.errors);
-  console.log(111, !!form.errors);
-
-  const isErrorObjectEmpty = (obj: any) => Object.entries(obj).length === 0;
-
-  console.log('isErrorObjectEmpty', isErrorObjectEmpty(form.errors));
 
   const handleGteChange = (value: string | null) => {
     if (value !== null) {
@@ -37,8 +30,10 @@ const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
   };
 
   return (
-    <div className={classes.container}>
-      <label className={classes.labelRatings}>Ratings:</label>
+    <Stack gap={8}>
+      <Text component="label" className={classes.labelRatings}>
+        Ratings:
+      </Text>
       <Group gap={8}>
         <NumberInput
           value={gteValue}
@@ -59,7 +54,7 @@ const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
           error={form.errors['rating.voteAverageLte']}
         />
       </Group>
-    </div>
+    </Stack>
   );
 };
 

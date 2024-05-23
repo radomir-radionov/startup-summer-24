@@ -2,7 +2,7 @@
   width: fit-content;
   padding: 10px 20px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: var(--mantine-font-size-xs);
   font-weight: 600;
   line-height: 140%;
   background-color: var(--mantine-color-purple-4);
@@ -18,7 +18,7 @@
   &[data-variant='subtle'] {
     height: 42px;
     padding: 0;
-    font-size: 14px;
+    font-size: var(--mantine-font-size-xs);
     font-weight: 500;
     line-height: 20px;
     color: var(--mantine-color-purple-4);

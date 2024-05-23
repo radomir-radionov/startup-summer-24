@@ -4,7 +4,7 @@ import Image from '../Image/Image';
 import { Center, Text } from '@mantine/core';
 import variants from './data';
 import classes from './Notice.module.css';
-import { Button, Link } from '..';
+import { Link } from '..';
 
 type TProps = {
   variant: 'notFound' | 'emptyState' | 'noSearchedMovies';

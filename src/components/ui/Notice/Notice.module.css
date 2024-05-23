@@ -32,8 +32,8 @@
   gap: 16px;
 
   & > .message {
-    font-size: 20px;
-    font-style: normal;
+    font-size: var(--mantine-font-size-md);
+
     font-weight: 600;
     line-height: normal;
   }

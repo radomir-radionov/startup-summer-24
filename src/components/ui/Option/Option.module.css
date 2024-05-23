@@ -1,7 +1,7 @@
 .option {
   padding: 8px 12px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: var(--mantine-font-size-xs);
   font-weight: 400;
   line-height: 20px;
 

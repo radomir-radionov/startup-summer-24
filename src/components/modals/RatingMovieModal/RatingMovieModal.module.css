@@ -14,7 +14,7 @@
 }
 
 .title {
-  font-size: 16px;
+  font-size: var(--mantine-font-size-sm);
   font-weight: 400;
   line-height: 140%;
 }

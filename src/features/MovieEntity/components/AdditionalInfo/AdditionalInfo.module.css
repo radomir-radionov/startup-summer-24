@@ -4,16 +4,15 @@
 }
 
 .title {
-  font-size: 20px;
-  font-style: normal;
+  font-size: var(--mantine-font-size-md);
+
   font-weight: 700;
   line-height: 20px;
-  font-feature-settings: 'clig' off, 'liga' off;
 }
 
 .text {
-  font-size: 16px;
-  font-style: normal;
+  font-size: var(--mantine-font-size-sm);
+
   font-weight: 400;
   line-height: 140%;
 }
