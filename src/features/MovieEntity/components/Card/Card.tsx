@@ -59,8 +59,6 @@ const Card = ({ movie, genres }: TProps) => {
     openModal(MODAL_TYPES.RATING_MOVIE_MODAL, { movie: movieClone });
   };
 
-  console.log(1111, movie.rating);
-
   return (
     <MantineCard className={classes.card} w={482} onClick={handleCardClick}>
       <Flex className={classes.contentBox} gap={16}>

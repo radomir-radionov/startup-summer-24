@@ -12,6 +12,8 @@ type TPreparedGenre = { id: number; value: string; label: string };
 const GenresFilter = ({ formKey, value, options }: TProps) => {
   const { onFilterParamChange } = useFiltersParams();
 
+  console.log('options', options);
+
   const handleOptionSubmit = (currId: string) => {
     const updatedGenres = value.includes(currId)
       ? value.filter((id) => id !== currId)

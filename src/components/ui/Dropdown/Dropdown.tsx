@@ -87,17 +87,16 @@ const Dropdown = ({
                 const isLast = currentGenreIndex === existingGenres.length - 1;
 
                 return (
-                  <Pill key={genre.id} className={classes.pill}>
-                    <Text
-                      component="span"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onRemove(genre.id);
-                      }}
-                    >
-                      {genre.label}
-                      {isLast ? '' : ','}
-                    </Text>
+                  <Pill
+                    key={genre.id}
+                    className={classes.pill}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onRemove(genre.id);
+                    }}
+                  >
+                    {genre.label}
+                    {isLast ? '' : ','}
                   </Pill>
                 );
               })}

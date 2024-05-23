@@ -16,7 +16,6 @@ const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
   const handleGteChange = (value: string | null) => {
     if (value !== null) {
       form.setFieldValue('rating.voteAverageGte', value);
-
       form.errors && debouncedFilterParamChange(value, 'vote_average.gte');
     }
   };
@@ -24,7 +23,6 @@ const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
   const handleLteChange = (value: string | null) => {
     if (value !== null) {
       form.setFieldValue('rating.voteAverageLte', value);
-
       form.errors && debouncedFilterParamChange(value, 'vote_average.lte');
     }
   };

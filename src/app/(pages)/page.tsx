@@ -13,7 +13,8 @@ async function getMovies(searchParams: any) {
   });
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    const errorResponse = await res.json();
+    throw new Error(errorResponse.error || 'Unknown error occurred');
   }
 
   return res.json();
@@ -40,17 +41,24 @@ const Page = async ({ searchParams }: any) => {
 };
 
 async function Suspended({ searchParams }: any) {
-  const {
-    data: { results, total_results },
-  } = await getMovies(searchParams);
+  try {
+    const {
+      data: { results, total_results },
+    } = await getMovies(searchParams);
+    const {
+      data: { genres },
+    } = await getGenres();
 
-  const {
-    data: { genres },
-  } = await getGenres();
-
-  return (
-    <MoviesPage movies={results} genres={genres} totalItems={total_results} />
-  );
+    return (
+      <MoviesPage movies={results} genres={genres} totalItems={total_results} />
+    );
+  } catch (error) {
+    if (error instanceof Error) {
+      return <div>Error: {error.message}</div>;
+    } else {
+      return <div>Error: Something went wrong</div>;
+    }
+  }
 }
 
 export default Page;
