@@ -35,13 +35,9 @@ const Page = ({ params }: TParams) => {
 };
 
 async function Suspended({ params: { id } }: TParams) {
-  try {
-    const movie = await getMovieById(id);
+  const movie = await getMovieById(id);
 
-    return <MoviePage movie={movie} />;
-  } catch (error) {
-    return <div>Error loading movie details</div>;
-  }
+  return <MoviePage movie={movie} />;
 }
 
 export default Page;

@@ -49,24 +49,16 @@ const Page = ({ searchParams }: any) => {
 };
 
 async function Suspended({ searchParams }: any) {
-  try {
-    const moviesData = await getMovies(searchParams);
-    const genresData = await getGenres();
+  const moviesData = await getMovies(searchParams);
+  const genresData = await getGenres();
 
-    return (
-      <MoviesPage
-        movies={moviesData.data.results}
-        genres={genresData.data.genres}
-        totalItems={moviesData.data.total_results}
-      />
-    );
-  } catch (error) {
-    if (error instanceof Error) {
-      return <div>Error: {error.message}</div>;
-    } else {
-      return <div>Error: Something went wrong</div>;
-    }
-  }
+  return (
+    <MoviesPage
+      movies={moviesData.data.results}
+      genres={genresData.data.genres}
+      totalItems={moviesData.data.total_results}
+    />
+  );
 }
 
 export default Page;

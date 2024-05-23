@@ -14,15 +14,11 @@ async function getGenres() {
 }
 
 async function Page() {
-  try {
-    const {
-      data: { genres },
-    } = await getGenres();
+  const {
+    data: { genres },
+  } = await getGenres();
 
-    return <RatedMoviesPage genres={[genres]} />;
-  } catch (error) {
-    return <div>Error loading the page. Please try again later.</div>;
-  }
+  return <RatedMoviesPage genres={[genres]} />;
 }
 
 export default Page;
