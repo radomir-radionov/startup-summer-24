@@ -21,9 +21,7 @@ async function getMovies(searchParams: any) {
 }
 
 async function getGenres() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/genres`, {
-    next: { revalidate: 0 },
-  });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/genres`);
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');
