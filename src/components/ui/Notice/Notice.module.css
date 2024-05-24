@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 16px;
   height: 100%;
+  text-align: center;
 }
 
 .notFoundContainer {
@@ -11,18 +12,21 @@
 
 /* icons */
 .notFound {
-  width: 656px;
-  height: 196px;
+  max-width: 656px;
+  max-height: 196px;
+  aspect-ratio: 1;
 }
 
 .emptyState {
-  width: 400px;
-  height: 300px;
+  max-width: 400px;
+  max-height: 300px;
+  aspect-ratio: 1;
 }
 
 .noSearchedMovies {
-  width: 310px;
-  height: 252px;
+  max-width: 310px;
+  max-height: 252px;
+  aspect-ratio: 1;
 }
 
 .messageBox {

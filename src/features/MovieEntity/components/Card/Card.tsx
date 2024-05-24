@@ -65,15 +65,24 @@ const Card = ({ movie, genres }: TProps) => {
   };
 
   return (
-    <MantineCard className={classes.card} w={482} onClick={handleCardClick}>
-      <Flex className={classes.contentBox} gap={16}>
+    <MantineCard
+      className={classes.card}
+      w={{ base: '100%', xl: 482 }}
+      h={{ base: 350, xs: 218 }}
+      onClick={handleCardClick}
+    >
+      <Flex
+        className={classes.contentBox}
+        gap="md"
+        direction={{ base: 'column', xs: 'row' }}
+      >
         <Image
           src={validatedImageSrc}
           alt="Poster"
           outerStyles={classes.image}
         />
         <Flex className={classes.content}>
-          <Stack gap={8}>
+          <Stack gap="s">
             <Title className={classes.title}>
               {original_title || 'Not indicated'}
             </Title>

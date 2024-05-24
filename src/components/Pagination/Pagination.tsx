@@ -33,19 +33,30 @@ const Pagination = ({
 
   const pageRange = getVisiblePages(active, totalPages);
 
+  const handlePagination = (direction: 'next' | 'previous') => {
+    const params = new URLSearchParams(searchParams);
+    const newPage = direction === 'next' ? active + 1 : active - 1;
+
+    newPage ? params.set('page', `${newPage}`) : params.delete('page');
+
+    setPage(newPage);
+    replace(`${pathname}?${params.toString()}`);
+  };
+
+  const handleButtonPageClick = (page: number) => {
+    const params = new URLSearchParams(searchParams);
+
+    page ? params.set('page', `${page}`) : params.delete('page');
+
+    setPage(page);
+    replace(`${pathname}?${params.toString()}`);
+  };
+
   return (
     <MantinePagination.Root total={totalPages}>
       <Group justify={contentPosition}>
         <MantinePagination.Previous
-          onClick={() => {
-            const params = new URLSearchParams(searchParams);
-            const page = active - 1;
-
-            page ? params.set('page', `${page}`) : params.delete('page');
-
-            setPage(active - 1);
-            replace(`${pathname}?${params.toString()}`);
-          }}
+          onClick={() => handlePagination('previous')}
           disabled={active === 1}
         />
 
@@ -55,27 +66,14 @@ const Pagination = ({
             variant={active === page ? 'filled' : 'outline'}
             data-active={active === page}
             className={classes.button}
-            onClick={() => {
-              const params = new URLSearchParams(searchParams);
-              page ? params.set('page', `${page}`) : params.delete('page');
-              setPage(page);
-              replace(`${pathname}?${params.toString()}`);
-            }}
+            onClick={() => handleButtonPageClick(page)}
           >
             {page}
           </Button>
         ))}
 
         <MantinePagination.Next
-          onClick={() => {
-            const params = new URLSearchParams(searchParams);
-            const page = active + 1;
-
-            page ? params.set('page', `${page}`) : params.delete('page');
-
-            setPage(active + 1);
-            replace(`${pathname}?${params.toString()}`);
-          }}
+          onClick={() => handlePagination('next')}
           disabled={active === totalPages}
         />
       </Group>

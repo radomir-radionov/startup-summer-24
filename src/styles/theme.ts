@@ -3,6 +3,13 @@
 import { createTheme, rem } from '@mantine/core';
 
 const theme = createTheme({
+  breakpoints: {
+    xs: '36em',
+    sm: '48em',
+    md: '64em',
+    lg: '74em',
+    xl: '90em',
+  },
   colors: {
     grayScale: [
       '#FFFFFF',

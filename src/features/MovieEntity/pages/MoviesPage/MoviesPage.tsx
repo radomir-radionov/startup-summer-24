@@ -21,7 +21,7 @@ const MoviesPage = ({ movies, genres, totalItems }: TProps) => {
   const mergedAMovies = movies.map((item) => updates.get(item.id) || item);
 
   return (
-    <Flex direction="column" gap="xlg" maw={980}>
+    <Flex direction="column" gap="xlg" maw={{ base: '100%', lg: 980 }}>
       <Title order={2}>Movies</Title>
       <Stack gap="xmd">
         <Filters genres={genres} />

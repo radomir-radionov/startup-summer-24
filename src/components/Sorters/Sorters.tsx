@@ -23,7 +23,7 @@ const Sorters = () => {
   };
 
   return (
-    <Flex justify="flex-end">
+    <Flex justify={{ base: 'flex-start', xl: 'flex-end' }}>
       <Select
         onChange={handleSortingChange}
         label="Sort by"
