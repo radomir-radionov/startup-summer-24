@@ -1,6 +1,6 @@
 import { StarIcon } from '@/assets/icons';
 import classes from './Rating.module.css';
-import { Box, Text } from '@mantine/core';
+import { Box, Flex, Text } from '@mantine/core';
 import formatVoteCount from '../../helpers/prepareVoteCount';
 import { Detail } from '../..';
 
@@ -12,13 +12,13 @@ type TProps = {
 
 const Rating = ({ rating, voteCount, color }: TProps) => {
   return (
-    <Box className={classes.container}>
-      <Box className={classes.valueBox}>
+    <Flex align="center" gap="s">
+      <Flex align="center" gap="4">
         <StarIcon color={color} />
         <Text className={classes.rating}>{rating}</Text>
-      </Box>
+      </Flex>
       <Detail name={`(${formatVoteCount(voteCount)})`} />
-    </Box>
+    </Flex>
   );
 };
 

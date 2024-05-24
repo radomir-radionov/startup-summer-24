@@ -28,7 +28,7 @@ const AdditionalInfo = ({
         >
           {!!videos.results[0]?.key && (
             <>
-              <Stack>
+              <Stack gap="md">
                 <Title order={3} className={classes.title}>
                   Trailer
                 </Title>

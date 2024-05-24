@@ -34,6 +34,7 @@ const theme = createTheme({
     xs: rem(14),
     sm: rem(16),
     md: rem(20),
+    xmd: rem(24),
     lg: rem(32),
   },
   lineHeights: {
@@ -44,14 +45,23 @@ const theme = createTheme({
     xl: '1.6',
   },
   spacing: {
-    xs: '0.25rem',
-    sm: '0.375rem',
-    md: '0.5rem',
-    xmd: '0.625rem',
-    lg: '0.75rem',
-    xlg: '1rem',
+    s: rem(8),
+    xs: rem(10),
+    sm: rem(12),
+    md: rem(16),
+    xmd: rem(20),
+    lg: rem(24),
+    xlg: rem(40),
     xl: '1.25rem',
     xxl: '1.5rem',
+  },
+  radius: {
+    s: rem(4),
+    xs: rem(8),
+    sm: rem(12),
+    md: rem(16),
+    lg: rem(20),
+    xl: rem(40),
   },
   headings: {
     sizes: {

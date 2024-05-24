@@ -1,18 +1,5 @@
-.container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  & > .valueBox {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-
-    & > .rating {
-      font-size: var(--mantine-font-size-sm);
-
-      font-weight: 600;
-      line-height: 20px;
-    }
-  }
+.rating {
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 600;
+  line-height: 20px;
 }

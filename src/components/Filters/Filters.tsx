@@ -99,7 +99,7 @@ const Filters = ({ genres }: TProps) => {
   }, [form.values.rating.voteAverageGte, form.values.rating.voteAverageLte]);
 
   return (
-    <Flex align="flex-end" gap={16} wrap="wrap">
+    <Flex align="flex-end" gap="md" wrap="wrap">
       <GenresFilter
         formKey={form.key('genresIds')}
         value={form.values.genresIds}

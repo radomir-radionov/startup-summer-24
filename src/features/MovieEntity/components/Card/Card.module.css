@@ -3,10 +3,10 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--mantine-spacing-s);
   height: 218px;
-  padding: 24px;
-  border-radius: 16px;
+  padding: var(--mantine-spacing-xmd);
+  border-radius: var(--mantine-radius-md);
   cursor: pointer;
 }
 
@@ -21,9 +21,7 @@
 
 .title {
   font-size: var(--mantine-font-size-md);
-
   font-weight: 600;
-  line-height: normal;
   color: var(--mantine-color-purple-5);
 }
 

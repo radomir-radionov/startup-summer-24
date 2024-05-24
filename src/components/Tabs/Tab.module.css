@@ -1,12 +1,12 @@
 .tab {
   display: flex;
   justify-content: flex-start;
-  padding: 10px;
+  padding: var(--mantine-spacing-xs);
   border: none !important;
   font-size: var(--mantine-font-size-sm);
   font-weight: 400;
   line-height: 140%;
-  border-radius: 8px;
+  border-radius: var(--mantine-radius-xs);
   color: var(--mantine-color-grayScale-7);
 
   &:not([data-active]) {

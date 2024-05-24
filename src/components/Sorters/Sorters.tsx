@@ -1,7 +1,7 @@
 'use client';
 
 import { Select } from '../ui';
-import sorters from './data.ts/data';
+import sorters from './data';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Flex } from '@mantine/core';
 

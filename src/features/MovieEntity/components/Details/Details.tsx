@@ -14,9 +14,9 @@ type TProps = {
 
 const Details = ({ data }: TProps) => {
   return (
-    <Flex direction="column" gap="12">
+    <Flex direction="column" gap="sm">
       {data.map(({ id, name, value }) => (
-        <Group key={id} gap="12" className={classes.detailWrapper}>
+        <Group key={id} gap="sm" className={classes.detailWrapper}>
           <Detail name={name} value={value} />
         </Group>
       ))}

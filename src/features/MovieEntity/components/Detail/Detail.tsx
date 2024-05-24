@@ -1,4 +1,4 @@
-import { Text } from '@mantine/core';
+import { Flex, Group, Text } from '@mantine/core';
 import classes from './Detail.module.css';
 
 type TProps = {
@@ -7,10 +7,10 @@ type TProps = {
 };
 
 const Detail = ({ name, value }: TProps) => (
-  <Text className={classes.detail}>
+  <Flex gap="s" classNames={classes}>
     <Text component="span">{name}</Text>
     <Text component="span">{value}</Text>
-  </Text>
+  </Flex>
 );
 
 export default Detail;

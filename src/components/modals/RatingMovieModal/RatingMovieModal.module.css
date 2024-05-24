@@ -1,7 +1,7 @@
 .form {
   width: 100%;
   max-width: 380px;
-  border-radius: 8px;
+  border-radius: var(--mantine-radius-xs);
   background: var(--mantine-color-grayScale-0);
   z-index: 1;
 }

@@ -1,11 +1,9 @@
 .logo {
   display: flex;
-  gap: 12px;
+  gap: var(--mantine-spacing-sm);
   font-family: Poppins;
-  font-size: 24px;
-
+  font-size: var(--mantine-font-size-xmd);
   font-weight: 600;
-  line-height: normal;
   letter-spacing: -0.48px;
   color: var(--mantine-color-purple-5);
 }

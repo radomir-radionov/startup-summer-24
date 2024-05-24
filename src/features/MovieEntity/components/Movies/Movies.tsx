@@ -12,7 +12,7 @@ type TProps = {
 
 const Movies = ({ movies, genres }: TProps) => {
   return (
-    <Flex gap={16} wrap="wrap">
+    <Flex gap="md" wrap="wrap">
       {movies.map((movie) => (
         <Card key={movie.id} movie={movie} genres={genres} />
       ))}

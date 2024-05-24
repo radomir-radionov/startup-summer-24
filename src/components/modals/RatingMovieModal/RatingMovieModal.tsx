@@ -44,7 +44,7 @@ const RatingMovieModal = ({
           <Icons.closeIcon />
         </UnstyledButton>
       </Group>
-      <Stack gap={16} p={16}>
+      <Stack gap="md" p="md">
         <Text className={classes.title} fw="700">
           {movie.original_title}
         </Text>
@@ -56,7 +56,7 @@ const RatingMovieModal = ({
           color="yellow.0"
           className={classes.rating}
         />
-        <Group gap={16}>
+        <Group gap="md">
           <Button onClick={handleSaveClick}>Save</Button>
           <Button variant="subtle" onClick={handleRemoveRatingClick}>
             Remove rating

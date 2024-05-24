@@ -7,12 +7,7 @@ import classes from './SideBar.module.css';
 
 const SideBar = () => {
   return (
-    <AppShell.Navbar
-      className={classes.sidebar}
-      pos={'static'}
-      h={'auto'}
-      p={24}
-    >
+    <AppShell.Navbar className={classes.sidebar} pos="static" h="auto" p="lg">
       <Logo />
       <Tabs />
     </AppShell.Navbar>
