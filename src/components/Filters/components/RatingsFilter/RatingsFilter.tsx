@@ -25,7 +25,6 @@ const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
   ) => {
     if (value !== null) {
       form.setFieldValue('rating.voteAverageGte', value as number);
-      console.log(+value + 1);
 
       !form.errors['rating.voteAverageGte'] &&
         debouncedFilterParamChange(`${value}`, 'vote_average.gte');

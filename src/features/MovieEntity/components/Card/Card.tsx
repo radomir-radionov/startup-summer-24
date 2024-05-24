@@ -50,7 +50,12 @@ const Card = ({ movie, genres }: TProps) => {
 
   const movieYear = new Date(release_date).getFullYear();
   const preparedVoteAverage = prepareVoteAverage(vote_average);
-  const preparedGenres = prepareGenres(genres, genre_ids);
+
+  const existedGenres = genre_ids?.map(
+    (id) => genres.find((genre) => genre.id === id)!
+  );
+
+  const preparedGenres = prepareGenres(existedGenres);
 
   const handleCardClick = () => router.push(`/movies/${id}`);
 

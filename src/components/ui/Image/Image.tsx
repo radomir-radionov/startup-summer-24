@@ -26,7 +26,7 @@ const Image = ({ src, alt, outerStyles, ...props }: TProps) => {
   ) : (
     <Box className={`${classes.placeholder} ${outerStyles}`}>
       <Icons.noPosterIcon color="var(--mantine-color-grayScale-4)" />
-      <Text>No Poster</Text>
+      <Text size="s">No Poster</Text>
     </Box>
   );
 };

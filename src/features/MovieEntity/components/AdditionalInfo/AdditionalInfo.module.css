@@ -10,9 +10,8 @@
 }
 
 .text {
-  font-size: var(--mantine-font-size-sm);
+  @mixin textBaseM;
   font-weight: 400;
-  line-height: 140%;
 }
 
 .iframe {

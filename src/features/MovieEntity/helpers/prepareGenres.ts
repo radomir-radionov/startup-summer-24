@@ -1,14 +1,7 @@
 import { TGenre } from '@/types/genre';
 
-const prepareGenres = (genres: TGenre[], ids?: number[]): string => {
-  if (!ids?.length) return 'Not indicated';
-
-  if (ids) {
-    return ids
-      .map((id) => genres.find((genre) => genre.id === id)!)
-      .map(({ name }) => name)
-      .join(', ');
-  }
+const prepareGenres = (genres: TGenre[]): string => {
+  if (!genres?.length) return 'Not indicated';
 
   return genres.map(({ name }) => name).join(', ');
 };

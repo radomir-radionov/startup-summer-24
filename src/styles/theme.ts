@@ -31,6 +31,7 @@ const theme = createTheme({
     yellow: ['#FAB005', '', '', '', '', '', '', '', '', ''],
   },
   fontSizes: {
+    s: rem(12),
     xs: rem(14),
     sm: rem(16),
     md: rem(20),
@@ -70,5 +71,5 @@ const theme = createTheme({
     },
   },
 });
-// lineHeight: 'var(--mantine-line-height-md)',
+
 export default theme;

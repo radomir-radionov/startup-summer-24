@@ -2,7 +2,12 @@ module.exports = {
   plugins: {
     'postcss-mixins': {
       mixins: {
-        textStyling: {
+        textBaseS: {
+          'font-size': 'var(--mantine-font-size-xs)',
+          'font-weight': 400,
+          'line-height': '20px',
+        },
+        textBaseM: {
           'font-size': 'var(--mantine-font-size-sm)',
           'font-weight': 700,
           'line-height': '140%',

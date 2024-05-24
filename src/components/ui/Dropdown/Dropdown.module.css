@@ -6,9 +6,7 @@
 }
 
 .label {
-  font-size: var(--mantine-font-size-sm);
-  font-weight: 700;
-  line-height: 140%;
+  @mixin textBaseM;
 }
 
 .input {
@@ -17,9 +15,7 @@
   height: 42px;
   padding: 8px 12px;
   border: 1px solid var(--mantine-color-grayScale-3);
-  font-size: var(--mantine-font-size-xs);
-  font-weight: 400;
-  line-height: 20px;
+  @mixin textBaseS;
   border-radius: var(--mantine-radius-xs);
   background: var(--mantine-color-grayScale-0);
 

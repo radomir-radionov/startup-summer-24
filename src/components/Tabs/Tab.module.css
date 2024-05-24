@@ -19,9 +19,7 @@
   }
 
   &[aria-selected='true'] {
-    font-size: var(--mantine-font-size-sm);
-    font-weight: 700;
-    line-height: 140%;
+    @mixin textBaseM;
     color: var(--mantine-color-purple-5);
     background: var(--mantine-color-purple-2);
   }

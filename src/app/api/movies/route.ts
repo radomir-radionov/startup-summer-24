@@ -11,8 +11,6 @@ export async function GET(request: NextRequest) {
   const genresParam = searchParams.get('with_genres');
   const primaryReleaseYearParam = searchParams.get('primary_release_year');
 
-  console.log('primaryReleaseYearParam', primaryReleaseYearParam);
-
   const resGenres = await fetch(urlsTmdb.genres, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_READ_ACCESS_TOKEN}`,
