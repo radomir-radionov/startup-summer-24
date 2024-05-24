@@ -40,12 +40,12 @@ const AdditionalInfo = ({
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 ></iframe>
               </Stack>
-              <Divider my="20" />
+              <Divider my="xmd" />
             </>
           )}
           {overview && (
             <>
-              <Stack gap={16}>
+              <Stack gap="md">
                 <Title order={3} className={classes.title}>
                   Description
                 </Title>
@@ -55,7 +55,7 @@ const AdditionalInfo = ({
             </>
           )}
           {!!production_companies.length && (
-            <Stack gap={16} className={classes.production}>
+            <Stack gap="md" className={classes.production}>
               <Title order={3} className={classes.title}>
                 Production
               </Title>

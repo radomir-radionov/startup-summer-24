@@ -1,13 +1,6 @@
 'use client';
 
-import {
-  Input,
-  InputBase,
-  Combobox,
-  useCombobox,
-  Text,
-  Pill,
-} from '@mantine/core';
+import { Input, InputBase, Combobox, useCombobox, Pill } from '@mantine/core';
 import Icons from '@/assets/icons';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './Dropdown.module.css';
@@ -106,7 +99,6 @@ const Dropdown = ({
           )}
         </InputBase>
       </Combobox.Target>
-
       <Combobox.Dropdown>
         <Combobox.Options h={224} style={{ overflowY: 'auto' }}>
           {data?.map(({ id, value, label }) => {

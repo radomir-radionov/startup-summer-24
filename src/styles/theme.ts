@@ -52,8 +52,6 @@ const theme = createTheme({
     xmd: rem(20),
     lg: rem(24),
     xlg: rem(40),
-    xl: '1.25rem',
-    xxl: '1.5rem',
   },
   radius: {
     s: rem(4),
@@ -72,5 +70,5 @@ const theme = createTheme({
     },
   },
 });
-
+// lineHeight: 'var(--mantine-line-height-md)',
 export default theme;
