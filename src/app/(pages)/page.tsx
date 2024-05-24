@@ -27,7 +27,9 @@ async function getMovies(searchParams: any) {
 
 async function getGenres() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/genres`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/genres`, {
+      next: { revalidate: 0 },
+    });
 
     if (!res.ok) {
       throw new Error('Failed to fetch genres');

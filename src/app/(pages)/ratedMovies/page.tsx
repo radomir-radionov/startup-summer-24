@@ -5,19 +5,20 @@ async function getGenres() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/genres`, {
       next: { revalidate: 0 },
     });
-
     if (!res.ok) {
       throw new Error('Failed to fetch genres');
     }
-
     return res.json();
   } catch (error) {
     console.error('Error fetching genres:', error);
     throw error;
   }
 }
+
 async function Page() {
   const genresData = await getGenres();
+
+  console.log('genresData', genresData);
 
   return <RatedMoviesPage genres={genresData.data.genres} />;
 }
