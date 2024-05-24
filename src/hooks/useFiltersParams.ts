@@ -12,9 +12,7 @@ const useFiltersParams = () => {
       params.delete(key);
     }
 
-    if (params.has('page')) {
-      params.set('page', '1');
-    }
+    if (params.has('page')) params.set('page', '1');
 
     replace(`${pathname}?${params}`, { scroll: false });
   };

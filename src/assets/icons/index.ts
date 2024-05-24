@@ -4,6 +4,7 @@ import CloseIcon from './CloseIcon';
 import SearchIcon from './SearchIcon';
 import ClapperboardIcon from './ClapperboardIcon';
 import NoPosterIcon from './NoPosterIcon';
+import ChevronButtonIcon from './ChevronButtonIcon';
 
 export { default as LogoIcon } from './LogoIcon.svg';
 export { default as StarIcon } from './StarIcon';
@@ -15,6 +16,7 @@ export { default as NoSearchedMoviesIcon } from './NoSearchedMoviesIcon.svg';
 const Icons = {
   chevronUp: ChevronUpIcon,
   chevronDown: ChevronDownIcon,
+  chevronButtonIcon: ChevronButtonIcon,
   closeIcon: CloseIcon,
   searchIcon: SearchIcon,
   clapperboardIcon: ClapperboardIcon,

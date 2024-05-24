@@ -14,6 +14,15 @@ type TProps = {
   genres: TGenre[];
 };
 
+export type TFormValues = {
+  genresIds: string[];
+  releaseYear: string | undefined;
+  rating: {
+    voteAverageGte: number | undefined;
+    voteAverageLte: number | undefined;
+  };
+};
+
 const Filters = ({ genres }: TProps) => {
   const searchParams = useSearchParams();
   const { onFiltersParamsReset } = useFiltersParams();
@@ -29,19 +38,41 @@ const Filters = ({ genres }: TProps) => {
       genresIds: searchParams.get('with_genres')?.toString().split(',') || [],
       releaseYear: searchParams.get('primary_release_year')?.toString(),
       rating: {
-        voteAverageGte: searchParams.get('vote_average.gte')?.toString() ?? '',
-        voteAverageLte: searchParams.get('vote_average.lte')?.toString() ?? '',
+        voteAverageGte: searchParams.get('vote_average.gte')
+          ? parseFloat(searchParams.get('vote_average.gte')!)
+          : undefined,
+        voteAverageLte: searchParams.get('vote_average.lte')
+          ? parseFloat(searchParams.get('vote_average.lte')!)
+          : undefined,
       },
     },
     validateInputOnChange: true,
     validate: {
       rating: {
-        voteAverageGte: (value, values) =>
-          parseFloat(value) > parseFloat(values.rating.voteAverageLte) &&
-          'GTE must be less than or equal to LTE',
-        voteAverageLte: (value, values) =>
-          parseFloat(value) < parseFloat(values.rating.voteAverageGte) &&
-          'LTE must be greater than or equal to GTE',
+        voteAverageGte: (value, values) => {
+          if (
+            value !== undefined &&
+            values.rating.voteAverageLte !== undefined
+          ) {
+            const gte = parseFloat(value.toString());
+            const lte = parseFloat(values.rating.voteAverageLte.toString());
+
+            if (gte > lte) {
+              return 'GTE must be less than or equal to LTE';
+            }
+          }
+        },
+        voteAverageLte: (value, values) => {
+          if (
+            value !== undefined &&
+            values.rating.voteAverageGte !== undefined
+          ) {
+            const lte = parseFloat(value.toString());
+            const gte = parseFloat(values.rating.voteAverageGte.toString());
+
+            if (lte < gte) return 'LTE must be greater than or equal to GTE';
+          }
+        },
       },
     },
   });

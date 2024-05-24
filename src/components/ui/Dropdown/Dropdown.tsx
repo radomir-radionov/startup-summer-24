@@ -67,7 +67,7 @@ const Dropdown = ({
             dropdownOpened ? (
               <Icons.chevronDown stroke="var(--mantine-color-purple-4)" />
             ) : (
-              <Icons.chevronUp />
+              <Icons.chevronUp className={classes.chevronUpIcon} />
             )
           }
           rightSectionPointerEvents="none"

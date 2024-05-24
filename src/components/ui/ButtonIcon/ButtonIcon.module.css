@@ -1,0 +1,9 @@
+.button > span {
+  &:hover > svg > path {
+    stroke: var(--mantine-color-purple-3);
+  }
+
+  &:active > svg > path {
+    stroke: var(--mantine-color-purple-4);
+  }
+}

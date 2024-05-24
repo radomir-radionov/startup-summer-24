@@ -10,7 +10,7 @@ type TProps = {
 const ReleaseYearFilter = ({ formKey, options, value }: TProps) => {
   const { onFilterParamChange } = useFiltersParams();
 
-  const handleReleaseYearChange = (value: string) =>
+  const handleReleaseYearChange = (value: string | null) =>
     onFilterParamChange(value, 'primary_release_year');
 
   return (
@@ -18,7 +18,7 @@ const ReleaseYearFilter = ({ formKey, options, value }: TProps) => {
       key={formKey}
       value={value}
       data={options}
-      onChange={(value) => value && handleReleaseYearChange(value)}
+      onChange={handleReleaseYearChange}
       label="Release year"
       placeholder="Select release year"
     />
