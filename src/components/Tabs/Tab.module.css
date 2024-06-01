@@ -20,7 +20,7 @@
 
   &[aria-selected='true'] {
     @mixin textBaseM;
-    color: var(--mantine-color-purple-5);
-    background: var(--mantine-color-purple-2);
+    color: var(--mantine-color-purple-4);
+    background: var(--mantine-color-purple-1);
   }
 }

@@ -24,7 +24,7 @@ const theme = createTheme({
       '',
     ],
     purple: [
-      '#F2ECFA',
+      '#F2EBF9',
       '#E5D5FA',
       '#D1B4F8',
       '#BD93F7',

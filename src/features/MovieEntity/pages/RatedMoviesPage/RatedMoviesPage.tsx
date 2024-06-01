@@ -2,7 +2,7 @@
 
 import { Movies } from '../..';
 import { TGenre } from '@/types/genre';
-import { Flex, Box, Title } from '@mantine/core';
+import { Flex, Box, Title, Stack } from '@mantine/core';
 import { Pagination, SearchBar } from '@/components';
 import { Notice } from '@/components/ui';
 import { useSearchParams } from 'next/navigation';
@@ -35,6 +35,8 @@ const RatedMoviesPage = ({ genres }: TProps) => {
       setInitialSearchedRatedMovies();
     }
   };
+
+  console.log('searchedRatedMovies', searchedRatedMovies);
 
   if (!ratedMovies.length) return <Notice variant="emptyState" />;
 

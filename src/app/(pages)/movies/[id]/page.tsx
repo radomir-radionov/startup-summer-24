@@ -15,7 +15,9 @@ async function getMovieById(id: string): Promise<any> {
       throw new Error(errorResponse.error || 'Failed to fetch data');
     }
 
-    return res.json();
+    const jsonData = await res.json();
+
+    return jsonData;
   } catch (error) {
     console.error('Error fetching movie by ID:', error);
     throw error;

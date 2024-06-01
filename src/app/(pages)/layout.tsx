@@ -23,7 +23,7 @@ export default function MoviesLayout({
       display={{ base: 'flex-column', lg: 'flex' }}
       padding="md"
     >
-      <AppShell.Header bg="purple.1" pos="static">
+      <AppShell.Header bg="purple.0" pos="static">
         <Group
           display={{ base: 'flex', lg: 'none' }}
           justify="space-between"
@@ -39,7 +39,7 @@ export default function MoviesLayout({
         pt={40}
         px={{ base: 'md', lg: '90' }}
         pb={82}
-        bg="grayScale.2"
+        bg="grayScale.1"
       >
         {children}
       </AppShell.Main>

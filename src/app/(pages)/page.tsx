@@ -13,12 +13,13 @@ async function getMovies(searchParams: any) {
       next: { revalidate: 0 },
     });
 
+    const jsonData = await res.json();
+
     if (!res.ok) {
-      const errorResponse = await res.json();
-      throw new Error(errorResponse.error || 'Unknown error occurred');
+      throw new Error(jsonData.error || 'Unknown error occurred');
     }
 
-    return res.json();
+    return jsonData;
   } catch (error) {
     console.error('Error fetching movies:', error);
     throw error;
@@ -31,11 +32,13 @@ async function getGenres() {
       next: { revalidate: 0 },
     });
 
+    const jsonData = await res.json();
+
     if (!res.ok) {
       throw new Error('Failed to fetch genres');
     }
 
-    return res.json();
+    return jsonData;
   } catch (error) {
     console.error('Error fetching genres:', error);
     throw error;

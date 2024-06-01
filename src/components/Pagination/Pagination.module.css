@@ -1,6 +1,6 @@
 .button {
   width: fit-content;
-  min-width: 32px;
+  width: 32px;
   height: 32px;
   padding: var(--mantine-spacing-s);
   border: 1px solid var(--mantine-color-gray-4);

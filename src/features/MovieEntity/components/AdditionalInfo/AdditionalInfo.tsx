@@ -32,13 +32,13 @@ const AdditionalInfo = ({
                 <Title order={3} className={classes.title}>
                   Trailer
                 </Title>
-                <iframe
-                  className={classes.iframe}
-                  width="500"
-                  height="281"
-                  src={`https://www.youtube.com/embed/${videos.results[0].key}`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                ></iframe>
+                <div className={classes.iframeContainer}>
+                  <iframe
+                    className={classes.iframe}
+                    src={`https://www.youtube.com/embed/${videos.results[0].key}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  ></iframe>
+                </div>
               </Stack>
               <Divider my="xmd" />
             </>
