@@ -7,16 +7,29 @@
   padding: var(--mantine-spacing-xmd);
   border-radius: var(--mantine-radius-md);
   flex-basis: 400px;
+
+  @media (max-width: 992px) {
+    flex-basis: auto;
+  }
 }
 
 .contentBox {
   width: 100%;
   height: 100%;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .content {
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 992px) {
+    gap: 40px;
+  }
 }
 
 .title {

@@ -18,7 +18,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding-top: 38%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  padding-top: 38%;
   max-width: 500px;
   max-height: 281px;
 }

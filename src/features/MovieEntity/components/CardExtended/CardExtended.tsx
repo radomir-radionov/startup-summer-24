@@ -9,7 +9,7 @@ import {
   Text,
 } from '@mantine/core';
 import { Image } from '@components/ui';
-import { TMovie, TMovieDetailed } from '@/types/movie';
+import { TMovieDetailed } from '@/types/movie';
 import { StarIcon } from '@/assets/icons';
 import { Details, Detail, Rating } from '../..';
 import {

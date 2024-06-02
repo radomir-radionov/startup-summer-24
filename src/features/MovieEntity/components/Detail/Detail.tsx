@@ -9,7 +9,7 @@ type TProps = {
 const Detail = ({ name, value }: TProps) => (
   <Flex gap="s" classNames={classes}>
     <Text component="span">{name}</Text>
-    <Text component="span">{value}</Text>
+    {value && <Text component="span">{value}</Text>}
   </Flex>
 );
 

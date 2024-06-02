@@ -12,4 +12,9 @@
     line-height: 20px;
     color: var(--mantine-color-grayScale-6);
   }
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 }
