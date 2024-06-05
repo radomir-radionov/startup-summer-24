@@ -1,3 +1,5 @@
+'use client';
+
 import { Button as MantineButton } from '@mantine/core';
 import { ReactNode } from 'react';
 import classes from './Button.module.css';

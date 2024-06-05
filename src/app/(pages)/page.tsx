@@ -1,5 +1,7 @@
-import { Suspense } from '@/components/ui';
+import { Filters, Sorters } from '@/components';
 import { MoviesPage } from '@/features/MovieEntity';
+import { Flex, Stack, Title } from '@mantine/core';
+import { Suspense } from '@/components/ui';
 
 async function getMovies(searchParams: any) {
   try {
@@ -45,22 +47,32 @@ async function getGenres() {
   }
 }
 
-const Page = ({ searchParams }: any) => {
+const Page = async ({ searchParams }: any) => {
+  const {
+    data: { genres },
+  } = await getGenres();
+
   return (
-    <Suspense keyProp={JSON.stringify(searchParams)}>
-      <Suspended searchParams={searchParams} />
-    </Suspense>
+    <Flex direction="column" gap="xlg" maw={{ base: '100%', lg: 980 }}>
+      <Title order={2}>Movies</Title>
+      <Stack gap="xmd">
+        <Filters genres={genres} />
+        <Sorters />
+        <Suspense keyProp={JSON.stringify(searchParams)}>
+          <Suspended searchParams={searchParams} genres={genres} />
+        </Suspense>
+      </Stack>
+    </Flex>
   );
 };
 
-async function Suspended({ searchParams }: any) {
+async function Suspended({ searchParams, genres }: any) {
   const moviesData = await getMovies(searchParams);
-  const genresData = await getGenres();
 
   return (
     <MoviesPage
+      genres={genres}
       movies={moviesData.data.results}
-      genres={genresData.data.genres}
       totalItems={moviesData.data.total_results}
     />
   );

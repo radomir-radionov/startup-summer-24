@@ -1,2 +1,13 @@
 - add correct suspense
 - add images using a new tech
+- add case for image when no payment
+- logo font family
+- header fixe
+- rating fixe
+
+
+- Неправильный шрифт не только на лого, но и на заголовках карточек и страницы.
+https://sas-movies.vercel.app/
+
+https://github.com/IggyPope/arrowflicks  
+https://github.com/AlexeySazonov31/movies-tmdb-react

@@ -1,26 +1,31 @@
+'use client';
+
 import { Select } from '@/components/ui';
 import { useFiltersParams } from '@/hooks';
+import { UseFormReturnType } from '@mantine/form';
+import { TFormValues } from '../../Filters';
 
 type TProps = {
-  formKey: string;
+  form: UseFormReturnType<TFormValues>;
   options: string[];
-  value?: string;
 };
 
-const ReleaseYearFilter = ({ formKey, options, value }: TProps) => {
+const ReleaseYearFilter = ({ form, options }: TProps) => {
   const { onFilterParamChange } = useFiltersParams();
 
-  const handleReleaseYearChange = (value: string | null) =>
+  // TODO: add types
+  const handleReleaseYearChange = (value: any) => {
     onFilterParamChange(value, 'primary_release_year');
+    form.setFieldValue('releaseYear', value);
+  };
 
   return (
     <Select
-      key={formKey}
-      value={value}
+      {...form.getInputProps('releaseYear')}
       data={options}
-      onChange={handleReleaseYearChange}
       label="Release year"
       placeholder="Select release year"
+      onChange={handleReleaseYearChange}
     />
   );
 };

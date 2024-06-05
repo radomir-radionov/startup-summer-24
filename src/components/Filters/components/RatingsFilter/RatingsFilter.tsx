@@ -1,3 +1,5 @@
+'use client';
+
 import { Group, NumberInputHandlers, Stack, Text } from '@mantine/core';
 import classes from './RatingsFilter.module.css';
 import { ButtonIcon, NumberInput } from '@/components/ui';
@@ -10,11 +12,9 @@ import { TFormValues } from '../../Filters';
 
 type TProps = {
   form: UseFormReturnType<TFormValues>;
-  gteValue?: number;
-  lteValue?: number;
 };
 
-const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
+const RatingsFilter = ({ form }: TProps) => {
   const inputFromRef = useRef<NumberInputHandlers>(null);
   const inputToRefRef = useRef<NumberInputHandlers>(null);
   const { onFilterParamChange } = useFiltersParams();
@@ -23,22 +23,17 @@ const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
   const handleGteChange = (
     value: string | number | ChangeEvent<HTMLInputElement>
   ) => {
-    if (value !== null) {
-      form.setFieldValue('rating.voteAverageGte', value as number);
-
-      !form.errors['rating.voteAverageGte'] &&
-        debouncedFilterParamChange(`${value}`, 'vote_average.gte');
-    }
+    !form.errors['rating.voteAverageGte'] &&
+      debouncedFilterParamChange(`${value}`, 'vote_average.gte');
+    form.setFieldValue('rating.voteAverageGte', value as number);
   };
 
   const handleLteChange = (
     value: string | number | ChangeEvent<HTMLInputElement>
   ) => {
-    if (value !== null) {
-      form.setFieldValue('rating.voteAverageLte', value as number);
-      !form.errors['rating.voteAverageLte'] &&
-        debouncedFilterParamChange(`${value}`, 'vote_average.lte');
-    }
+    !form.errors['rating.voteAverageLte'] &&
+      debouncedFilterParamChange(`${value}`, 'vote_average.lte');
+    form.setFieldValue('rating.voteAverageLte', value as number);
   };
 
   const numberInputRightSection = (
@@ -64,8 +59,8 @@ const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
       </Text>
       <Group gap={8}>
         <NumberInput
-          value={gteValue}
-          onChange={(value) => handleGteChange(value as string)}
+          {...form.getInputProps('rating.voteAverageGte')}
+          onChange={(value) => handleGteChange(value)}
           placeholder="From"
           handlersRef={inputFromRef}
           min={0}
@@ -75,7 +70,7 @@ const RatingsFilter = ({ form, gteValue, lteValue }: TProps) => {
           error={form.errors['rating.voteAverageGte']}
         />
         <NumberInput
-          value={lteValue}
+          {...form.getInputProps('rating.voteAverageLte')}
           onChange={(value) => handleLteChange(value)}
           placeholder="To"
           handlersRef={inputToRefRef}

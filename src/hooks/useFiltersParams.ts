@@ -5,7 +5,7 @@ import { useCustomSearchParams } from '.';
 const useFiltersParams = () => {
   const { replace, pathname, params } = useCustomSearchParams();
 
-  const handleChange = (value: string | null, key: string) => {
+  const handleChange = (value: string | null | undefined, key: string) => {
     if (value && key) {
       params.set(key, value);
     } else {

@@ -1,7 +1,6 @@
 'use client';
 
-import { Filters, Pagination, Sorters } from '@/components';
-import { Flex, Stack, Title } from '@mantine/core';
+import { Pagination } from '@/components';
 import { Movies } from '../..';
 import { TMovie } from '@/types/movie';
 import { TGenre } from '@/types/genre';
@@ -21,25 +20,20 @@ const MoviesPage = ({ movies, genres, totalItems }: TProps) => {
   const mergedAMovies = movies.map((item) => updates.get(item.id) || item);
 
   return (
-    <Flex direction="column" gap="xlg" maw={{ base: '100%', lg: 980 }}>
-      <Title order={2}>Movies</Title>
-      <Stack gap="xmd">
-        <Filters genres={genres} />
-        <Sorters />
-        {movies.length ? (
-          <>
-            <Movies movies={mergedAMovies} genres={genres} />
-            <Pagination
-              totalItems={totalItems}
-              itemsPerPage={20}
-              contentPosition="flex-end"
-            />
-          </>
-        ) : (
-          <Notice variant="noSearchedMovies" />
-        )}
-      </Stack>
-    </Flex>
+    <>
+      {movies.length ? (
+        <>
+          <Movies movies={mergedAMovies} genres={genres} />
+          <Pagination
+            totalItems={totalItems}
+            itemsPerPage={20}
+            contentPosition="flex-end"
+          />
+        </>
+      ) : (
+        <Notice variant="noSearchedMovies" />
+      )}
+    </>
   );
 };
 

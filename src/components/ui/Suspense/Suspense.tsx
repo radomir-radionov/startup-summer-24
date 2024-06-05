@@ -1,5 +1,3 @@
-'use client';
-
 import { ReactNode, Suspense as ReactSuspense } from 'react';
 import { Center, Loader } from '@mantine/core';
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { Combobox } from '@mantine/core';
 import classes from './Option.module.css';
 

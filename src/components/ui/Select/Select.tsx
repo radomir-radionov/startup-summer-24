@@ -1,3 +1,5 @@
+'use client';
+
 import Icons from '@/assets/icons';
 import { Select as MantineSelect, SelectProps } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';

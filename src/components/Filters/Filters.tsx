@@ -9,6 +9,7 @@ import { useForm } from '@mantine/form';
 import { useFiltersParams } from '@/hooks';
 import { GenresFilter, RatingsFilter, ReleaseYearFilter } from '..';
 import { useEffect, useMemo } from 'react';
+import prepareGenres from './helpers/prepareGenres';
 
 type TProps = {
   genres: TGenre[];
@@ -16,10 +17,10 @@ type TProps = {
 
 export type TFormValues = {
   genresIds: string[];
-  releaseYear: string | undefined;
+  releaseYear: string | null;
   rating: {
-    voteAverageGte: number | undefined;
-    voteAverageLte: number | undefined;
+    voteAverageGte: number | string;
+    voteAverageLte: number | string;
   };
 };
 
@@ -27,23 +28,17 @@ const Filters = ({ genres }: TProps) => {
   const searchParams = useSearchParams();
   const { onFiltersParamsReset } = useFiltersParams();
 
-  const preparedGenres = genres.map((genre) => ({
-    id: genre.id,
-    value: genre.id.toString(),
-    label: genre.name,
-  }));
-
   const form = useForm({
     initialValues: {
       genresIds: searchParams.get('with_genres')?.toString().split(',') || [],
-      releaseYear: searchParams.get('primary_release_year')?.toString(),
+      releaseYear: searchParams.get('primary_release_year'),
       rating: {
         voteAverageGte: searchParams.get('vote_average.gte')
-          ? parseFloat(searchParams.get('vote_average.gte')!)
-          : undefined,
+          ? +searchParams.get('vote_average.gte')!
+          : '',
         voteAverageLte: searchParams.get('vote_average.lte')
-          ? parseFloat(searchParams.get('vote_average.lte')!)
-          : undefined,
+          ? +searchParams.get('vote_average.lte')!
+          : '',
       },
     },
     validateInputOnChange: true,
@@ -77,11 +72,18 @@ const Filters = ({ genres }: TProps) => {
     },
   });
 
-  const noValues =
-    !form.values.genresIds.length &&
-    !form.values.releaseYear &&
-    !form.values.rating.voteAverageGte &&
-    !form.values.rating.voteAverageLte;
+  const {
+    genresIds,
+    releaseYear,
+    rating: { voteAverageGte, voteAverageLte },
+  } = form.values;
+
+  const isFiltred = !(
+    genresIds.length ||
+    releaseYear ||
+    voteAverageGte ||
+    voteAverageLte
+  );
 
   const formIsValid = useMemo(
     () => Object.keys(form.errors).length === 0,
@@ -98,27 +100,17 @@ const Filters = ({ genres }: TProps) => {
     form.validateField('rating.voteAverageLte');
   }, [form.values.rating.voteAverageGte, form.values.rating.voteAverageLte]);
 
+  console.log(111, form.values.genresIds);
+
   return (
     <Flex align="flex-end" gap="md" wrap="wrap">
-      <GenresFilter
-        formKey={form.key('genresIds')}
-        value={form.values.genresIds}
-        options={preparedGenres}
-      />
-      <ReleaseYearFilter
-        formKey={form.key('releaseYear')}
-        value={form.values.releaseYear}
-        options={prepareReleaseYears()}
-      />
-      <RatingsFilter
-        form={form}
-        gteValue={form.values.rating.voteAverageGte}
-        lteValue={form.values.rating.voteAverageLte}
-      />
+      <GenresFilter form={form} options={prepareGenres(genres)} />
+      <ReleaseYearFilter form={form} options={prepareReleaseYears()} />
+      <RatingsFilter form={form} />
       <Button
         variant="subtle"
         onClick={handleButtonResetClick}
-        disabled={noValues || !formIsValid}
+        disabled={isFiltred}
       >
         Reset filters
       </Button>
