@@ -21,6 +21,7 @@
 
 .title {
   font-size: var(--mantine-font-size-md);
+  font-size: 20px;
   font-weight: 600;
   color: var(--mantine-color-purple-4);
 }

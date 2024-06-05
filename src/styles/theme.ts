@@ -1,8 +1,12 @@
 'use client';
 
+import { Inter } from 'next/font/google';
 import { createTheme, rem } from '@mantine/core';
 
+const inter = Inter({ subsets: ['latin'] });
+
 const theme = createTheme({
+  fontFamily: inter.style.fontFamily,
   breakpoints: {
     xs: '36em',
     sm: '48em',

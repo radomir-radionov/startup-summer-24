@@ -83,7 +83,7 @@ const Card = ({ movie, genres }: TProps) => {
         />
         <Flex className={classes.content}>
           <Stack gap="s">
-            <Title className={classes.title}>
+            <Title order={3} className={classes.title}>
               {original_title || 'Not indicated'}
             </Title>
             <Detail name={`${movieYear || 'Not indicated'}`} />
